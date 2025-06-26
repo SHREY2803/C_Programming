@@ -1,11 +1,15 @@
 #include <stdio.h>
 
-int main(){
-    float min, hrs;
+int main()
+{
+    int min, hrs;
     min = 230;
-    hrs = min/60;
 
-    printf("The aprrox time for %0.2f minutes in hrs is : %0.2f hrs ",min,hrs);
-    
+    int temp = min;
+    hrs = temp / 60;
+    min = temp % 60;
+
+    printf("The aprrox time for %d minutes in hrs is : %d hrs and %d mins ", temp, hrs, min);
+
     return 0;
 }
