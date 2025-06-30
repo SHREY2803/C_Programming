@@ -10,9 +10,13 @@ int main()
     {
         printf("Your number is a positive a number. \n");
     }
-    else
+    else if (num < 0)
     {
         printf("Your number is a negative number. \n");
+    }
+    else
+    {
+        printf("Your number is zero. \n");
     }
     return 0;
 }
