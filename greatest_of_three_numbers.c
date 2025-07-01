@@ -3,9 +3,12 @@
 int main()
 {
     int a, b, c;
-    a = 9;
-    b = 10;
-    c = 12;
+    printf("Enter your three numbers here: \n");
+
+    scanf("%d", &a);
+    scanf("%d", &b);
+    scanf("%d", &c);
+
     if (a > b)
     {
         if (a > c)
