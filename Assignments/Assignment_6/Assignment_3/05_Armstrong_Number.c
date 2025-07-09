@@ -10,6 +10,34 @@ int int_pow(int base, int exp)
     return result;
 }
 
+int calDigits(int n)
+{
+    int digits = 0;
+    while (n)
+    {
+        digits++;
+        n = n / 10;
+    }
+
+    return digits;
+}
+
+int checkArmstrongNumber(int n)
+{
+    int arm = 0;
+    int digits = calDigits(n);
+    int temp = n;
+
+    while (temp)
+    {
+        int ld = temp % 10;
+        arm += int_pow(ld, digits);
+        temp = temp / 10;
+    }
+
+    return arm == n;
+}
+
 int main()
 {
     int n;
@@ -17,25 +45,9 @@ int main()
     printf("Enter your number: \n");
     scanf("%d", &n);
 
-    int temp1 = n;
-    int temp2 = n;
-    int arm = 0;
-    int digits = 0;
+    int arm = checkArmstrongNumber(n);
 
-    while (temp1)
-    {
-        digits++;
-        temp1 = temp1 / 10;
-    }
-
-    while (temp2)
-    {
-        int ld = temp2 % 10;
-        arm += int_pow(ld, digits);
-        temp2 = temp2 / 10;
-    }
-
-    if (arm == n)
+    if (arm)
     {
         printf("It is an Armstrong number.\n");
     }
