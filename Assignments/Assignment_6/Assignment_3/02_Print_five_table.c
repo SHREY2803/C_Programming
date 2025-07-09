@@ -1,11 +1,9 @@
 #include <stdio.h>
 
-int main()
+void tableOfFive()
 {
     int n = 5;
     int i = 1;
-
-    printf("Table of five: \n");
 
     while (i <= 10)
     {
@@ -13,6 +11,11 @@ int main()
         n += 5;
         i++;
     }
+}
+int main()
+{
+    printf("Table of five: \n");
+    tableOfFive();
 
     return 0;
 }

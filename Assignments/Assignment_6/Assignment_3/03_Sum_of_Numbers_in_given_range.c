@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main()
+void sumOfNum()
 {
     int n1, n2;
 
@@ -28,5 +28,10 @@ int main()
     }
 
     printf("The total sum of numbers from range of n1 and n2 is %d\n", sum);
+}
+
+int main()
+{
+    sumOfNum();
     return 0;
 }
