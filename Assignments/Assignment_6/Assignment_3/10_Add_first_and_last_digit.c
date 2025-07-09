@@ -11,6 +11,17 @@ int countDigits(int n)
 
     return digits;
 }
+
+int findFirstDigit(int n)
+{
+    int fd = n;
+    while (fd >= 10)
+    {
+        fd = fd / 10;
+    }
+
+    return fd;
+}
 int main()
 {
     int n;
@@ -21,7 +32,6 @@ int main()
     int ld = n % 10;
     int sum = 0;
 
-    int fd = n;
     // while (temp)
     // {
     //     int digit = temp % 10;
@@ -31,11 +41,8 @@ int main()
     //     }
     //     temp = temp / 10;
     // }
+    int fd = findFirstDigit(n);
 
-    while (fd >= 10)
-    {
-        fd = fd / 10;
-    }
     sum += fd + ld;
     printf("%d", sum);
 

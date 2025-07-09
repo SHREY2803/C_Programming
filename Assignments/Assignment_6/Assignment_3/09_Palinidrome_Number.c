@@ -1,16 +1,11 @@
 #include <stdio.h>
 
-int main()
+void checkPalindromeNumber(int n)
 {
-    int n;
-
-    printf("Enter your number here: \n");
-    scanf("%d", &n);
-
     if (n < 0)
     {
         printf("negative number is not a palindrome.");
-        return 0;
+        return;
     }
 
     int temp = n;
@@ -31,5 +26,14 @@ int main()
     {
         printf("Not a palindrome Number\n");
     }
+}
+int main()
+{
+    int n;
+
+    printf("Enter your number here: \n");
+    scanf("%d", &n);
+
+    checkPalindromeNumber(n);
     return 0;
 }

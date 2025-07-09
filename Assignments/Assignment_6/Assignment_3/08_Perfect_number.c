@@ -1,15 +1,12 @@
 #include <stdio.h>
 #include <math.h>
-int main()
-{
-    int n;
-    printf("Enter your number here: \n");
-    scanf("%d", &n);
 
+void checkPerfectNumber(int n)
+{
     if (n <= 1)
     {
         printf("Not a perfect number\n");
-        return 0;
+        return;
     }
 
     int sum = 1; // n/1 = n, so excluding n value directly and adding 1 directly as 1 is proper divisor.
@@ -41,5 +38,14 @@ int main()
     {
         printf("Not a perfect number\n");
     }
+}
+
+int main()
+{
+    int n;
+    printf("Enter your number here: \n");
+    scanf("%d", &n);
+    checkPerfectNumber(n);
+
     return 0;
 }
