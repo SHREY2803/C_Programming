@@ -1,12 +1,7 @@
 #include <stdio.h>
 
-int main()
+void checkAgePerson(int age)
 {
-    int age;
-
-    printf("Enter your age here: \n");
-    scanf("%d", &age);
-
     if (age >= 60)
     {
         printf("You fall under the Senior category.\n");
@@ -23,6 +18,16 @@ int main()
     {
         printf("You fall under the Child category.\n");
     }
+}
+
+int main()
+{
+    int age;
+
+    printf("Enter your age here: \n");
+    scanf("%d", &age);
+
+    checkAgePerson(age);
 
     return 0;
 }

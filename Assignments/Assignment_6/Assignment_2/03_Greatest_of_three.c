@@ -1,14 +1,7 @@
 #include <stdio.h>
 
-int main()
+void checkGreatestNumber(int a, int b, int c)
 {
-    int a, b, c;
-    printf("Enter your three numbers here: \n");
-
-    scanf("%d", &a);
-    scanf("%d", &b);
-    scanf("%d", &c);
-
     if (a > b)
     {
         if (a > c)
@@ -28,6 +21,17 @@ int main()
     {
         printf("c is greatest");
     }
+}
+int main()
+{
+    int a, b, c;
+    printf("Enter your three numbers here: \n");
+
+    scanf("%d", &a);
+    scanf("%d", &b);
+    scanf("%d", &c);
+
+    checkGreatestNumber(a, b, c);
 
     return 0;
 }

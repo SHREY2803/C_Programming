@@ -1,12 +1,7 @@
 #include <stdio.h>
 
-int main()
+void gradeCalculator(int marks)
 {
-    double marks;
-
-    printf("Enter your marks here: \n");
-    scanf("%lf", &marks);
-
     if (marks >= 75)
     {
         printf("Distinction\n");
@@ -27,6 +22,15 @@ int main()
     {
         printf("Fail\n");
     }
+}
 
+int main()
+{
+    double marks;
+
+    printf("Enter your marks here: \n");
+    scanf("%lf", &marks);
+
+    gradeCalculator(marks);
     return 0;
 }
