@@ -1,7 +1,12 @@
 #include <stdio.h>
 
-void checkDivisibility(int num)
+void checkDivisibility()
 {
+    int num;
+
+    printf("Enter your number here: \n");
+    scanf("%d", &num);
+
     if (num % 3 == 0 && num % 5 == 0)
     {
         printf("Divisible by both\n");
@@ -21,12 +26,8 @@ void checkDivisibility(int num)
 }
 int main()
 {
-    int num;
 
-    printf("Enter your number here: \n");
-    scanf("%d", &num);
-
-    checkDivisibility(num);
+    checkDivisibility();
 
     return 0;
 }

@@ -1,7 +1,14 @@
 #include <stdio.h>
 
-void checkTraingle(int s1, int s2, int s3)
+void checkTraingle()
 {
+    int s1, s2, s3;
+
+    printf("Enter the sides of your triangle:\n");
+    scanf("%d", &s1);
+    scanf("%d", &s2);
+    scanf("%d", &s3);
+
     if ((s1 + s2 > s3) && (s2 + s3 > s1) && (s1 + s3 > s2))
     {
 
@@ -26,12 +33,5 @@ void checkTraingle(int s1, int s2, int s3)
 
 int main()
 {
-    int s1, s2, s3;
-
-    printf("Enter the sides of your triangle:\n");
-    scanf("%d", &s1);
-    scanf("%d", &s2);
-    scanf("%d", &s3);
-
-    checkTraingle(s1, s2, s3);
+    checkTraingle();
 }

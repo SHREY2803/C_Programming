@@ -1,7 +1,16 @@
 #include <stdio.h>
 
-void discountCalculator(double total_price, char check_student)
+void discountCalculator()
 {
+    char check_student;
+    double total_price;
+
+    printf("Enter your total purchased price: \n");
+    scanf("%lf", &total_price);
+
+    printf("Are you a student? (y/n): ");
+    scanf(" %c", &check_student);
+
     if (check_student == 'y')
     {
         if (total_price >= 500)
@@ -31,16 +40,8 @@ void discountCalculator(double total_price, char check_student)
 
 int main()
 {
-    char check_student;
-    double total_price;
 
-    printf("Enter your total purchased price: \n");
-    scanf("%lf", &total_price);
-
-    printf("Are you a student? (y/n): ");
-    scanf(" %c", &check_student);
-
-    discountCalculator(total_price, check_student);
+    discountCalculator();
 
     return 0;
 }
