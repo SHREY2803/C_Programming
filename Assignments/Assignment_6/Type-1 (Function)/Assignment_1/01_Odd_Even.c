@@ -1,8 +1,12 @@
 #include <stdio.h>
 
-void checkOddEven(int n)
+// Type 1 Function
+void checkOddEven()
 {
-    if (n % 2 == 0)
+    int num;
+    printf("Enter your number here: \n");
+    scanf("%d", &num);
+    if (num % 2 == 0)
     {
         printf("Number is even\n");
     }
@@ -14,11 +18,7 @@ void checkOddEven(int n)
 
 int main()
 {
-    int num;
-    printf("Enter your number here: \n");
-    scanf("%d", &num);
-
-    checkOddEven(num);
+    checkOddEven();
 
     return 0;
 }
