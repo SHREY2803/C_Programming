@@ -1,7 +1,12 @@
 #include <stdio.h>
 
-void calFactorial(int n)
+void calFactorial()
 {
+
+    int n;
+    printf("Enter your number here: ");
+    scanf("%d", &n);
+
     if (n < 0)
     {
         printf("Factorial is not defined for negative numbers.\n");
@@ -25,12 +30,7 @@ void calFactorial(int n)
 
 int main()
 {
-    int n;
-
-    printf("Enter your number here: ");
-    scanf("%d", &n);
-
-    calFactorial(n);
+    calFactorial();
 
     return 0;
 }

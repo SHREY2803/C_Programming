@@ -1,28 +1,6 @@
 #include <stdio.h>
 
-int countDigits(int n)
-{
-    int digits = 0;
-    while (n)
-    {
-        digits++;
-        n = n / 10;
-    }
-
-    return digits;
-}
-
-int findFirstDigit(int n)
-{
-    int fd = n;
-    while (fd >= 10)
-    {
-        fd = fd / 10;
-    }
-
-    return fd;
-}
-int main()
+void findFirstLastDigitSum()
 {
     int n;
 
@@ -32,19 +10,18 @@ int main()
     int ld = n % 10;
     int sum = 0;
 
-    // while (temp)
-    // {
-    //     int digit = temp % 10;
-    //     if (countDigits(temp) == 1)
-    //     {
-    //         sum = sum + digit;
-    //     }
-    //     temp = temp / 10;
-    // }
-    int fd = findFirstDigit(n);
+    int fd = n;
+    while (fd >= 10)
+    {
+        fd = fd / 10;
+    }
 
     sum += fd + ld;
-    printf("%d", sum);
+    printf("The sum of first digit(%d) and last digit(%d) is : %d", fd, ld, sum);
+}
+int main()
+{
+    findFirstLastDigitSum();
 
     return 0;
 }

@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <math.h>
 
-void checkPerfectNumber(int n)
+void checkPerfectNumber()
 {
+    int n;
+    printf("Enter your number here: \n");
+    scanf("%d", &n);
+
     if (n <= 1)
     {
         printf("Not a perfect number\n");
@@ -42,10 +46,8 @@ void checkPerfectNumber(int n)
 
 int main()
 {
-    int n;
-    printf("Enter your number here: \n");
-    scanf("%d", &n);
-    checkPerfectNumber(n);
+
+    checkPerfectNumber();
 
     return 0;
 }
