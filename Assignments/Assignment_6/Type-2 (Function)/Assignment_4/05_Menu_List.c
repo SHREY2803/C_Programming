@@ -123,8 +123,7 @@ void sumOfDigits(int n)
 
 int main()
 {
-    char task;
-    int n;
+    int task, n;
 
     printf("Press:\n");
     printf("1. To check if the number is even or odd.\n");
@@ -134,39 +133,42 @@ int main()
     printf("5. To reverse the number.\n");
     printf("6. To find the sum of digits.\n");
 
-    scanf("%c", &task);
+    scanf("%d", &task);
+
+    if (task < 1 || task > 6)
+    {
+        printf("No such operation available. Please enter a valid choice (1-6).\n");
+        return 0;
+    }
 
     printf("Now enter your number here: \n");
     scanf("%d", &n);
 
-    if (task == '1')
+    if (task == 1)
     {
         checkOddEven(n);
     }
-    else if (task == '2')
+    else if (task == 2)
     {
         checkPrime(n);
     }
-    else if (task == '3')
+    else if (task == 3)
     {
         checkPalindromeNumber(n);
     }
-    else if (task == '4')
+    else if (task == 4)
     {
         checkNegativePositive(n);
     }
-    else if (task == '5')
+    else if (task == 5)
     {
         reverseNumber(n);
     }
-    else if (task == '6')
+    else if (task == 6)
     {
         sumOfDigits(n);
     }
-    else
-    {
-        printf("No more operations available.\n");
-    }
+   
 
     return 0;
 }
