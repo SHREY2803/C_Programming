@@ -1,24 +1,24 @@
 #include <stdio.h>
 
-// Type 1 Function
-void checkOddEven()
+// Type 3 Function
+int checkOddEven()
 {
     int num;
     printf("Enter your number here: \n");
     scanf("%d", &num);
-    if (num % 2 == 0)
-    {
-        printf("Number is even\n");
-    }
-    else
-    {
-        printf("Number is odd\n");
-    }
+
+    return num%2==0;
 }
 
 int main()
 {
-    checkOddEven();
+    int result = checkOddEven();
+    if(result){
+        printf("Even Number");
+    }
+    else{
+        printf("Odd Number");
+    }
 
     return 0;
 }

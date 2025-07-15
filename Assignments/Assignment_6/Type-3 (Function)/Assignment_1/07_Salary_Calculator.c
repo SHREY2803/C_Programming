@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void salaryCalculator()
+int salaryCalculator()
 {
     double num;
     printf("Enter your basic salary here: \n");
@@ -16,11 +16,13 @@ void salaryCalculator()
         total_salary = num + (num * 0.15) + (num * 0.25) + (num * 0.3);
     }
 
-    printf("Your total salary is %0.2lf", total_salary);
+    // printf("Your total salary is %0.2lf", total_salary);
+    return total_salary;
 }
 int main()
 {
-    salaryCalculator();
+    double result = salaryCalculator();
+    printf("Your total salary is %0.2lf", result);
 
     return 0;
 }

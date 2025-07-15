@@ -1,14 +1,20 @@
 #include <stdio.h>
 
-void checkLeapYear(); // function declaration
+int checkLeapYear(); // function declaration
 
 int main()
 {
-    checkLeapYear(); // function call
+    int result = checkLeapYear(); // function call
+    if(result){
+        printf("Leap Year\n");
+    }
+    else{
+        printf("Not a Leap Year\n");
+    }
     return 0;
 }
 
-void checkLeapYear() // function defination
+int checkLeapYear() // function defination
 {
     int year;
     printf("Enter the year number to check whether it is leap year or not: \n");
@@ -16,10 +22,10 @@ void checkLeapYear() // function defination
 
     if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
     {
-        printf("It is a leap year\n");
+        return 1;
     }
     else
     {
-        printf("Not a leap year\n");
+        return 0;
     }
 }

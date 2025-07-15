@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 
-void UpperCaseOrLowerCase()
+int UpperCaseOrLowerCase()
 {
     char ch;
     printf("Enter your character here: \n");
@@ -9,23 +9,38 @@ void UpperCaseOrLowerCase()
 
     if (!isalpha(ch))
     {
-        printf("Your character should be an alphabet\n");
+
+        return -1;
     }
     else
     {
         if (ch >= 'A' && ch <= 'Z')
         {
-            printf("Your character is a UpperCase character.");
+
+            return 1;
         }
         else
         {
-            printf("Your character is a LowerCase character.");
+
+            return 0;
         }
     }
 }
 
 int main()
 {
-    UpperCaseOrLowerCase();
+    int result = UpperCaseOrLowerCase();
+    if (result == -1)
+    {
+        printf("Your character should be an alphabet\n");
+    }
+    else if (result == 1)
+    {
+        printf("Your character is a UpperCase character.");
+    }
+    else
+    {
+        printf("Your character is a LowerCase character.");
+    }
     return 0;
 }

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 
-void vowelConsonant()
+int vowelConsonant()
 {
     char ch;
     printf("Enter your character here: \n");
@@ -9,24 +9,39 @@ void vowelConsonant()
 
     if (!isalpha(ch)) // isalpha() function checks whether your character is alphabet or not.
     {
-        printf("Your character should be an alphabet\n");
+
+        return -1;
     }
     else
     {
         if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U')
         {
-            printf("Your character is a vowel\n");
+
+            return 1;
         }
         else
         {
-            printf("Your character is a consonant\n");
+
+            return 0;
         }
     }
 }
 
 int main()
 {
-    vowelConsonant();
+    int result = vowelConsonant();
+    if (result == -1)
+    {
+        printf("Your character should be an alphabet\n");
+    }
+    else if (result == 1)
+    {
+        printf("Your character is a vowel\n");
+    }
+    else
+    {
+        printf("Your character is a consonant\n");
+    }
 
     return 0;
 }

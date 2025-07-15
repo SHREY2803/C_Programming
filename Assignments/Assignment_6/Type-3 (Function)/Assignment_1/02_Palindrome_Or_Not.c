@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 // Type 1 Function
-void checkPalindrome()
+int checkPalindrome()
 {
     int n;
     printf("Enter your number here: \n");
@@ -9,8 +9,7 @@ void checkPalindrome()
 
     if (n < 0)
     {
-        printf("Negative numbers are not a palindrome numbers.\n");
-        return;
+        return -1;
     }
 
     int temp = n;
@@ -25,16 +24,28 @@ void checkPalindrome()
 
     if (rev == n)
     {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int main()
+{
+    int result = checkPalindrome();
+    if (result == -1)
+    {
+        printf("Negative numbers are not a palindrome numbers.\n");
+    }
+    else if (result == 1)
+    {
         printf("Your number is a palindrome number\n");
     }
     else
     {
         printf("Your number is not a palindrome number\n");
     }
-}
-
-int main()
-{
-    checkPalindrome();
     return 0;
 }
