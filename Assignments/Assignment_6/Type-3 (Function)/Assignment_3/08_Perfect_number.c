@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-void checkPerfectNumber()
+int checkPerfectNumber()
 {
     int n;
     printf("Enter your number here: \n");
@@ -9,8 +9,8 @@ void checkPerfectNumber()
 
     if (n <= 1)
     {
-        printf("Not a perfect number\n");
-        return;
+        // printf("Not a perfect number\n");
+        return 0;
     }
 
     int sum = 1; // n/1 = n, so excluding n value directly and adding 1 directly as 1 is proper divisor.
@@ -36,18 +36,27 @@ void checkPerfectNumber()
 
     if (sum == n)
     {
-        printf("Perfect number\n");
+        // printf("Perfect number\n");
+        return 1;
     }
     else
     {
-        printf("Not a perfect number\n");
+        // printf("Not a perfect number\n");
+        return 0;
     }
 }
 
 int main()
 {
 
-    checkPerfectNumber();
+    int result = checkPerfectNumber();
+    if (result)
+    {
+        printf("Perfect Number\n");
+    }
+    else{
+        printf("Not a Perfect number\n");
+    }
 
     return 0;
 }

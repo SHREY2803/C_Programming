@@ -32,16 +32,24 @@ int checkStrongNumber()
 
     if (strong == n)
     {
-        printf("Number is a strong number");
+        return 1;
     }
     else
     {
-        printf("Not a strong number");
+        return 0;
     }
 }
 
 int main()
 {
-    checkStrongNumber();
+    int result = checkStrongNumber();
+    if (result)
+    {
+        printf("Strong Number\n");
+    }
+    else{
+        printf("Not a strong number\n");
+    }
+    
     return 0;
 }

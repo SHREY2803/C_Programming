@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void findFirstLastDigitSum()
+int findFirstLastDigitSum()
 {
     int n;
 
@@ -17,11 +17,13 @@ void findFirstLastDigitSum()
     }
 
     sum += fd + ld;
-    printf("The sum of first digit(%d) and last digit(%d) is : %d", fd, ld, sum);
+    // printf("The sum of first digit(%d) and last digit(%d) is : %d", fd, ld, sum);
+    return sum;
 }
 int main()
 {
-    findFirstLastDigitSum();
+    int sum = findFirstLastDigitSum();
+    printf("The sum of first digit and last digit is : %d", sum);
 
     return 0;
 }

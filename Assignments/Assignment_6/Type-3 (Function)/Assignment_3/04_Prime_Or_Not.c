@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void checkPrime()
+int checkPrime()
 {
     int n;
     printf("Enter the number here: \n");
@@ -8,7 +8,7 @@ void checkPrime()
 
     if (n <= 1)
     {
-        printf("Not a prime number.\n");
+        return 0;
     }
 
     int count = 0;
@@ -33,17 +33,25 @@ void checkPrime()
 
     if (count == 2)
     {
-        printf("It is a prime number.\n");
+        return 1;
     }
     else
     {
-        printf("Not a prime number.\n");
+        return 0;
     }
 }
 
 int main()
 {
-    checkPrime();
+    int result = checkPrime();
+    if (result)
+    {
+        printf("Prime number");
+    }
+    else
+    {
+        printf("Not a prime number.");
+    }
 
     return 0;
 }
