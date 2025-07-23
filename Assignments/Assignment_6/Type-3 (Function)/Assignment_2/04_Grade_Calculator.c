@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void gradeCalculator()
+int gradeCalculator()
 {
     double marks;
 
@@ -9,17 +9,47 @@ void gradeCalculator()
 
     if (marks >= 75)
     {
-        printf("Distinction\n");
+        return 1;
+        // printf("Distinction\n");
     }
     else if (marks >= 65 && marks < 75)
     {
-        printf("First Class\n");
+        return 2;
+        // printf("First Class\n");
     }
     else if (marks >= 55 && marks < 65)
     {
-        printf("Second Class\n");
+        return 3;
+        // printf("Second Class\n");
     }
     else if (marks >= 40 && marks < 55)
+    {
+        return 4;
+        // printf("Pass Class\n");
+    }
+    else
+    {
+        return 0;
+        // printf("Fail\n");
+    }
+}
+
+int main()
+{
+    int result = gradeCalculator();
+    if (result == 1)
+    {
+        printf("Distinction\n");
+    }
+    else if (result == 2)
+    {
+        printf("First Class\n");
+    }
+    else if (result == 3)
+    {
+        printf("Second Class\n");
+    }
+    else if (result == 4)
     {
         printf("Pass Class\n");
     }
@@ -27,10 +57,5 @@ void gradeCalculator()
     {
         printf("Fail\n");
     }
-}
-
-int main()
-{
-    gradeCalculator();
     return 0;
 }

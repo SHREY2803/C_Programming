@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void checkTraingle()
+int checkTraingle()
 {
     int s1, s2, s3;
 
@@ -14,24 +14,36 @@ void checkTraingle()
 
         if (s1 == s2 && s2 == s3)
         {
-            printf("Equilateral Traingle\n");
+            return 1;
         }
         else if (s1 == s2 || s2 == s3 || s1 == s3)
         {
-            printf("Isoceles Triangle\n");
+            return 2;
         }
         else
         {
-            printf("Scalene Triangle\n");
+            return 3;
         }
     }
     else
     {
-        printf("Invalid triangle\n");
+        return 0;
     }
 }
 
 int main()
 {
-    checkTraingle();
+    int result = checkTraingle();
+    if (result == 1)
+    {
+        printf("Equilateral Triangle");
+    }
+    else if (result == 2)
+    {
+        printf("Isoceles Triangle");
+    }
+    else
+    {
+        printf("Scalene Triangle");
+    }
 }

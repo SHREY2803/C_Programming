@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void sampleCalculator()
+double sampleCalculator()
 {
     double n1, n2;
     char op;
@@ -19,38 +19,32 @@ void sampleCalculator()
     if (op == '+')
     {
         result = n1 + n2;
-        printf("Result = %0.2lf\n", result);
     }
     else if (op == '-')
     {
         result = n1 - n2;
-        printf("Result = %0.2lf\n", result);
     }
     else if (op == '*')
     {
         result = n1 * n2;
-        printf("Result = %0.2lf\n", result);
     }
     else if (op == '/')
     {
         result = n1 / n2;
-        printf("Result = %0.2lf\n", result);
     }
     else if (op == '%')
     {
         result = (int)(n1) % (int)(n2);
-        printf("Result = %0.2lf\n", result);
     }
-    else
-    {
-        printf("This operator is not available right now.\n");
-    }
+
+    return result;
 }
 
 int main()
 {
 
-    sampleCalculator();
+    double result = sampleCalculator();
+    printf("The byproduct of your operation is %0.2lf ", result);
 
     return 0;
 }

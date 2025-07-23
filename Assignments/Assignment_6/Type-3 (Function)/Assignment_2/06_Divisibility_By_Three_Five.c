@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void checkDivisibility()
+int checkDivisibility()
 {
     int num;
 
@@ -9,13 +9,38 @@ void checkDivisibility()
 
     if (num % 3 == 0 && num % 5 == 0)
     {
-        printf("Divisible by both\n");
+        return 1;
+        // printf("Divisible by both\n");
     }
     else if (num % 3 == 0)
     {
-        printf("Divisible by three, but not by five\n");
+        return 2;
+        // printf("Divisible by three, but not by five\n");
     }
     else if (num % 5 == 0)
+    {
+        return 3;
+        // printf("Divisible by five, but not by three\n");
+    }
+    else
+    {
+        return 0;
+        // printf("Divisible by None\n");
+    }
+}
+int main()
+{
+
+    int result = checkDivisibility();
+    if (result == 1)
+    {
+        printf("Divisible by both\n");
+    }
+    else if (result == 2)
+    {
+        printf("Divisible by three, but not by five\n");
+    }
+    else if (result == 3)
     {
         printf("Divisible by five, but not by three\n");
     }
@@ -23,11 +48,6 @@ void checkDivisibility()
     {
         printf("Divisible by None\n");
     }
-}
-int main()
-{
-
-    checkDivisibility();
 
     return 0;
 }
