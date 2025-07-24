@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int factorialNum(int n)
+{
+    int fac = 1;
+    if (n == 0)
+    {
+        return fac;
+    }
+    while (n)
+    {
+        fac = fac * n;
+        n--;
+    }
+
+    return fac;
+}
+
+int checkStrongNumberRange()
+{
+    int n;
+    printf("Enter your number here: \n");
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++)
+    {
+        int strong = 0;
+        int temp = i;
+
+        while (temp)
+        {
+            int ld = temp % 10;
+            strong = strong + factorialNum(ld);
+            temp = temp / 10;
+        }
+
+        if (strong == i)
+        {
+            printf("%d is a strong number\n", i);
+        }
+    }
+    return 0;
+}
+
+int main()
+{
+    checkStrongNumberRange();
+    return 0;
+}
