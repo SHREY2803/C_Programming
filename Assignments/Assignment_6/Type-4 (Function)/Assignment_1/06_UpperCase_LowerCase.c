@@ -1,15 +1,11 @@
 #include <stdio.h>
 #include <ctype.h>
 
-int UpperCaseOrLowerCase()
+int UpperCaseOrLowerCase(char ch)
 {
-    char ch;
-    printf("Enter your character here: \n");
-    scanf("%c", &ch);
 
     if (!isalpha(ch))
     {
-
         return -1;
     }
     else
@@ -29,7 +25,11 @@ int UpperCaseOrLowerCase()
 
 int main()
 {
-    int result = UpperCaseOrLowerCase();
+    char ch;
+    printf("Enter your character here: \n");
+    scanf("%c", &ch);
+
+    int result = UpperCaseOrLowerCase(ch);
     if (result == -1)
     {
         printf("Your character should be an alphabet\n");

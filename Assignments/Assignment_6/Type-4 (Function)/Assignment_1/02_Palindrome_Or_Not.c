@@ -1,11 +1,7 @@
 #include <stdio.h>
 
-// Type 1 Function
-int checkPalindrome()
+int checkPalindrome(int n)
 {
-    int n;
-    printf("Enter your number here: \n");
-    scanf("%d", &n);
 
     if (n < 0)
     {
@@ -34,7 +30,11 @@ int checkPalindrome()
 
 int main()
 {
-    int result = checkPalindrome();
+    int n;
+    printf("Enter your number here: \n");
+    scanf("%d", &n);
+
+    int result = checkPalindrome(n);
     if (result == -1)
     {
         printf("Negative numbers are not a palindrome numbers.\n");

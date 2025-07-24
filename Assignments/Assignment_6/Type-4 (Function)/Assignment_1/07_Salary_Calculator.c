@@ -1,11 +1,7 @@
 #include <stdio.h>
 
-int salaryCalculator()
+double salaryCalculator(double num)
 {
-    double num;
-    printf("Enter your basic salary here: \n");
-    scanf("%lf", &num);
-
     double total_salary = 0;
     if (num <= 5000)
     {
@@ -21,7 +17,11 @@ int salaryCalculator()
 }
 int main()
 {
-    double result = salaryCalculator();
+    double num;
+    printf("Enter your basic salary here: \n");
+    scanf("%lf", &num);
+
+    double result = salaryCalculator(num);
     printf("Your total salary is %0.2lf", result);
 
     return 0;

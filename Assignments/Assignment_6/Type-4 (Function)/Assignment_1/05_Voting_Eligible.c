@@ -1,14 +1,11 @@
 #include <stdio.h>
 
-int votingEligible()
+int votingEligible(int age)
 {
-    int age;
-    printf("Enter your age to check whether you are eligible for voting or not: \n");
-    scanf("%d", &age);
 
     if (age >= 18)
     {
-        
+
         return 1;
     }
     else
@@ -20,7 +17,11 @@ int votingEligible()
 
 int main()
 {
-    int result = votingEligible();
+    int age;
+    printf("Enter your age to check whether you are eligible for voting or not: \n");
+    scanf("%d", &age);
+
+    int result = votingEligible(age);
     if (result)
     {
         printf("You are eligible to vote\n");

@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <ctype.h>
 
-int vowelConsonant()
+int vowelConsonant(char ch)
 {
-    char ch;
-    printf("Enter your character here: \n");
-    scanf("%c", &ch);
 
     if (!isalpha(ch)) // isalpha() function checks whether your character is alphabet or not.
     {
@@ -29,7 +26,11 @@ int vowelConsonant()
 
 int main()
 {
-    int result = vowelConsonant();
+    char ch;
+    printf("Enter your character here: \n");
+    scanf("%c", &ch);
+
+    int result = vowelConsonant(ch);
     if (result == -1)
     {
         printf("Your character should be an alphabet\n");
