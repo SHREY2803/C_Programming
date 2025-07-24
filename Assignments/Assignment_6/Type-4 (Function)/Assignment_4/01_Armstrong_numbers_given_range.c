@@ -12,17 +12,12 @@ int calDigits(int n)
     return digits;
 }
 
-int checkArmstrongRange()
+int checkArmstrongRange(int n) 
 {
-    int n;
-
-    printf("Enter your number here: \n");
-    scanf("%d", &n);
-
+    int count = 0;
     for (int i = 1; i <= n; i++)
     {
-        int arm = 0;
-        int temp = i;
+        int arm = 0, temp = i;
         int digits = calDigits(temp);
 
         while (temp)
@@ -34,14 +29,21 @@ int checkArmstrongRange()
 
         if (arm == i)
         {
-            printf("%d is a armstrong number\n", i);
+            printf("%d is an Armstrong number\n", i);
+            count++;
         }
     }
-    return 0;
+    return count;
 }
 
 int main()
 {
-    checkArmstrongRange();
+    int n;
+    printf("Enter your number here: \n");
+    scanf("%d", &n);
+
+    int total = checkArmstrongRange(n);
+    printf("Total Armstrong numbers in range 1 to %d: %d\n", n, total);
+
     return 0;
 }

@@ -16,12 +16,9 @@ int factorialNum(int n)
     return fac;
 }
 
-int checkStrongNumberRange()
+int checkStrongNumberRange(int n)
 {
-    int n;
-    printf("Enter your number here: \n");
-    scanf("%d", &n);
-
+    int total = 0;
     for (int i = 1; i <= n; i++)
     {
         int strong = 0;
@@ -37,13 +34,19 @@ int checkStrongNumberRange()
         if (strong == i)
         {
             printf("%d is a strong number\n", i);
+            total++;
         }
     }
-    return 0;
+    return total;
 }
 
 int main()
 {
-    checkStrongNumberRange();
+    int n;
+    printf("Enter your number here: \n");
+    scanf("%d", &n);
+
+    int total = checkStrongNumberRange(n);
+    printf("Total Armstrong numbers in range 1 to %d: %d\n", n, total);
     return 0;
 }

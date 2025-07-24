@@ -1,11 +1,9 @@
 #include <stdio.h>
 
-int checkPrimeRange()
+int checkPrimeRange(int n)
 {
-    int n;
-    printf("Enter your number here: \n");
-    scanf("%d", &n);
 
+    int total = 0;
     for (int i = 1; i <= n; i++)
     {
 
@@ -34,14 +32,20 @@ int checkPrimeRange()
         if (cnt == 2)
         {
             printf("%d is a prime number \n", i);
+            total++;
         }
     }
-    return 0;
+    return total;
 }
 
 int main()
 {
-    checkPrimeRange();
+    int n;
+    printf("Enter your number here: \n");
+    scanf("%d", &n);
+
+    int total = checkPrimeRange(n);
+    printf("Total Armstrong numbers in range 1 to %d: %d\n", n, total);
 
     return 0;
 }

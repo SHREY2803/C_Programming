@@ -1,11 +1,8 @@
 #include <stdio.h>
 
-int checkPerfectNumberRange()
+int checkPerfectNumberRange(int n)
 {
-    int n;
-    printf("Enter your number here: \n");
-    scanf("%d", &n);
-
+    int total = 0;
     for (int i = 1; i <= n; i++)
     {
         if (i <= 1)
@@ -28,18 +25,23 @@ int checkPerfectNumberRange()
                 }
             }
         }
-        if(sum == i){
-            printf("%d is a perfect number.\n",i);
+        if (sum == i)
+        {
+            printf("%d is a perfect number.\n", i);
+            total++;
         }
     }
-    return 0;
-
-    
+    return total;
 }
 
 int main()
 {
-    checkPerfectNumberRange();
-    
+    int n;
+    printf("Enter your number here: \n");
+    scanf("%d", &n);
+
+    int total = checkPerfectNumberRange(n);
+    printf("Total Armstrong numbers in range 1 to %d: %d\n", n, total);
+
     return 0;
 }

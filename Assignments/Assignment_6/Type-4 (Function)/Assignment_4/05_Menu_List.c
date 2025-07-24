@@ -1,10 +1,7 @@
 #include <stdio.h>
 
-int checkOddEven()
+int checkOddEven(int n)
 {
-    int n;
-    printf("Now enter your number here: \n");
-    scanf("%d", &n);
 
     if (n % 2 == 0)
     {
@@ -18,11 +15,8 @@ int checkOddEven()
     }
 }
 
-int checkPrime()
+int checkPrime(int n)
 {
-    int n;
-    printf("Now enter your number here: \n");
-    scanf("%d", &n);
 
     if (n <= 1)
     {
@@ -40,11 +34,8 @@ int checkPrime()
     return 1;
 }
 
-int checkPalindromeNumber()
+int checkPalindromeNumber(int n)
 {
-    int n;
-    printf("Now enter your number here: \n");
-    scanf("%d", &n);
 
     if (n < 0)
     {
@@ -74,11 +65,9 @@ int checkPalindromeNumber()
     }
 }
 
-int checkNegativePositive()
+int checkNegativePositive(int n)
 {
-    int n;
-    printf("Now enter your number here: \n");
-    scanf("%d", &n);
+    ;
 
     if (n > 0)
     {
@@ -97,12 +86,8 @@ int checkNegativePositive()
     }
 }
 
-int reverseNumber()
+int reverseNumber(int n)
 {
-    int n;
-    printf("Now enter your number here: \n");
-    scanf("%d", &n);
-
     int rev = 0;
     while (n)
     {
@@ -114,12 +99,8 @@ int reverseNumber()
     // printf("Reverse of your number is %d\n", rev);
     return rev;
 }
-int sumOfDigits()
+int sumOfDigits(int n)
 {
-    int n;
-    printf("Now enter your number here: \n");
-    scanf("%d", &n);
-
     int sum = 0;
 
     while (n)
@@ -146,6 +127,10 @@ int main()
 
     scanf("%d", &task);
 
+    int n;
+    printf("Now enter your number here: \n");
+    scanf("%d", &n);
+
     if (task < 1 || task > 6)
     {
         printf("No such operation available. Please enter a valid choice (1-6).\n");
@@ -154,7 +139,7 @@ int main()
 
     if (task == 1)
     {
-        if (checkOddEven())
+        if (checkOddEven(n))
         {
             printf("Even Number\n");
         }
@@ -165,7 +150,7 @@ int main()
     }
     else if (task == 2)
     {
-        if (checkPrime())
+        if (checkPrime(n))
         {
             printf("Prime Number");
         }
@@ -176,7 +161,7 @@ int main()
     }
     else if (task == 3)
     {
-        if (checkPalindromeNumber())
+        if (checkPalindromeNumber(n))
         {
             printf("Palindrome Number");
         }
@@ -187,7 +172,7 @@ int main()
     }
     else if (task == 4)
     {
-        int result = checkNegativePositive();
+        int result = checkNegativePositive(n);
 
         // Optional: use return value for some logic
         if (result == 1)
@@ -205,12 +190,12 @@ int main()
     }
     else if (task == 5)
     {
-        int result = reverseNumber();
+        int result = reverseNumber(n);
         printf("Reverse of your number is %d\n", result);
     }
     else if (task == 6)
     {
-        int result = sumOfDigits();
+        int result = sumOfDigits(n);
         printf("The sum of digits of your number is %d\n", result);
     }
 
