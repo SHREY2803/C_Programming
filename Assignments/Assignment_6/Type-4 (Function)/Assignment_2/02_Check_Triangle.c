@@ -1,13 +1,7 @@
 #include <stdio.h>
 
-int checkTraingle()
+int checkTraingle(int s1, int s2, int s3)
 {
-    int s1, s2, s3;
-
-    printf("Enter the sides of your triangle:\n");
-    scanf("%d", &s1);
-    scanf("%d", &s2);
-    scanf("%d", &s3);
 
     if ((s1 + s2 > s3) && (s2 + s3 > s1) && (s1 + s3 > s2))
     {
@@ -33,7 +27,14 @@ int checkTraingle()
 
 int main()
 {
-    int result = checkTraingle();
+    int s1, s2, s3;
+
+    printf("Enter the sides of your triangle:\n");
+    scanf("%d", &s1);
+    scanf("%d", &s2);
+    scanf("%d", &s3);
+
+    int result = checkTraingle(s1, s2, s3);
     if (result == 1)
     {
         printf("Equilateral Triangle");
