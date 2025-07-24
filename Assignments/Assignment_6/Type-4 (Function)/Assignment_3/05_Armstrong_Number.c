@@ -22,12 +22,8 @@ int calDigits(int n)
     return digits;
 }
 
-int checkArmstrongNumber()
+int checkArmstrongNumber(int n)
 {
-    int n;
-    printf("Enter your number: \n");
-    scanf("%d", &n);
-
     int arm = 0;
     int digits = calDigits(n);
     int temp = n;
@@ -53,7 +49,11 @@ int checkArmstrongNumber()
 
 int main()
 {
-    int result = checkArmstrongNumber();
+    int n;
+    printf("Enter your number: \n");
+    scanf("%d", &n);
+
+    int result = checkArmstrongNumber(n);
     if (result)
     {
         printf("It is an Armstrong number.\n");

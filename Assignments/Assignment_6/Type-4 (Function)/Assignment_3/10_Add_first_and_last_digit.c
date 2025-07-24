@@ -1,12 +1,7 @@
 #include <stdio.h>
 
-int findFirstLastDigitSum()
+int findFirstLastDigitSum(int n)
 {
-    int n;
-
-    printf("Enter your number here: \n");
-    scanf("%d", &n);
-
     int ld = n % 10;
     int sum = 0;
 
@@ -22,7 +17,12 @@ int findFirstLastDigitSum()
 }
 int main()
 {
-    int sum = findFirstLastDigitSum();
+    int n;
+
+    printf("Enter your number here: \n");
+    scanf("%d", &n);
+
+    int sum = findFirstLastDigitSum(n);
     printf("The sum of first digit and last digit is : %d", sum);
 
     return 0;

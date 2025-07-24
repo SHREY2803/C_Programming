@@ -1,11 +1,7 @@
 #include <stdio.h>
 
-int checkPrime()
+int checkPrime(int n)
 {
-    int n;
-    printf("Enter the number here: \n");
-    scanf("%d", &n);
-
     if (n <= 1)
     {
         return 0;
@@ -43,7 +39,11 @@ int checkPrime()
 
 int main()
 {
-    int result = checkPrime();
+    int n;
+    printf("Enter the number here: \n");
+    scanf("%d", &n);
+
+    int result = checkPrime(n);
     if (result)
     {
         printf("Prime number");

@@ -1,12 +1,7 @@
 #include <stdio.h>
 
-int sumOfNum()
+int sumOfNum(int n1, int n2)
 {
-    int n1, n2;
-
-    printf("Enter the numbers n1 and n2, to find the sum of numbers from the range of n1 and n2: \n");
-    scanf("%d", &n1);
-    scanf("%d", &n2);
 
     int sum = 0;
 
@@ -32,7 +27,13 @@ int sumOfNum()
 
 int main()
 {
-    int result = sumOfNum();
+    int n1, n2;
+
+    printf("Enter the numbers n1 and n2, to find the sum of numbers from the range of n1 and n2: \n");
+    scanf("%d", &n1);
+    scanf("%d", &n2);
+
+    int result = sumOfNum(n1, n2);
     printf("The total sum of numbers from range of n1 and n2 is %d\n", result);
     return 0;
 }

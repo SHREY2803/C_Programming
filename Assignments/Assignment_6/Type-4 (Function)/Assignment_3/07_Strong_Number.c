@@ -13,12 +13,8 @@ int calFactorial(int n)
     return fac;
 }
 
-int checkStrongNumber()
+int checkStrongNumber(int n)
 {
-    int n;
-
-    printf("Enter your number here: \n");
-    scanf("%d", &n);
 
     int temp = n;
     int strong = 0;
@@ -42,14 +38,20 @@ int checkStrongNumber()
 
 int main()
 {
-    int result = checkStrongNumber();
+    int n;
+
+    printf("Enter your number here: \n");
+    scanf("%d", &n);
+
+    int result = checkStrongNumber(n);
     if (result)
     {
         printf("Strong Number\n");
     }
-    else{
+    else
+    {
         printf("Not a strong number\n");
     }
-    
+
     return 0;
 }
