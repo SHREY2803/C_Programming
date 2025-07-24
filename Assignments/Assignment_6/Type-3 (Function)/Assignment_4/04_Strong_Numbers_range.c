@@ -16,7 +16,7 @@ int factorialNum(int n)
     return fac;
 }
 
-void checkStrongNumberRange()
+int checkStrongNumberRange()
 {
     int n;
     printf("Enter your number here: \n");
@@ -39,6 +39,7 @@ void checkStrongNumberRange()
             printf("%d is a strong number\n", i);
         }
     }
+    return 0;
 }
 
 int main()

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void checkOddEven()
+int checkOddEven()
 {
     int n;
     printf("Now enter your number here: \n");
@@ -8,15 +8,17 @@ void checkOddEven()
 
     if (n % 2 == 0)
     {
-        printf("Number is even\n");
+        // printf("Number is even\n");
+        return 1;
     }
     else
     {
-        printf("Number is odd\n");
+        // printf("Number is odd\n");
+        return 0;
     }
 }
 
-void checkPrime()
+int checkPrime()
 {
     int n;
     printf("Now enter your number here: \n");
@@ -24,41 +26,21 @@ void checkPrime()
 
     if (n <= 1)
     {
-        printf("Not a prime number.\n");
-        return;
+        return 0;
     }
 
-    int count = 0;
-    int i = 1;
-
-    while (i * i <= n)
+    for (int i = 2; i * i <= n; i++)
     {
         if (n % i == 0)
         {
-            count++;
-            if (n / i != i)
-            {
-                count++;
-            }
-            if (count > 2)
-            {
-                break;
-            }
+            return 0;
         }
-        i++;
     }
 
-    if (count == 2)
-    {
-        printf("It is a prime number.\n");
-    }
-    else
-    {
-        printf("Not a prime number.\n");
-    }
+    return 1;
 }
 
-void checkPalindromeNumber()
+int checkPalindromeNumber()
 {
     int n;
     printf("Now enter your number here: \n");
@@ -66,8 +48,8 @@ void checkPalindromeNumber()
 
     if (n < 0)
     {
-        printf("negative number is not a palindrome.");
-        return;
+        // printf("negative number is not a palindrome.");
+        return 0;
     }
 
     int temp = n;
@@ -82,15 +64,17 @@ void checkPalindromeNumber()
 
     if (rev == n)
     {
-        printf("Palindrome Number\n");
+        return 1;
+        // printf("Palindrome Number\n");
     }
     else
     {
-        printf("Not a palindrome Number\n");
+        return 0;
+        // printf("Not a palindrome Number\n");
     }
 }
 
-void checkNegativePositive()
+int checkNegativePositive()
 {
     int n;
     printf("Now enter your number here: \n");
@@ -99,18 +83,21 @@ void checkNegativePositive()
     if (n > 0)
     {
         printf("Your number is a positive a number. \n");
+        return 1;
     }
     else if (n < 0)
     {
         printf("Your number is a negative number. \n");
+        return -1;
     }
     else
     {
         printf("Your number is zero. \n");
+        return 0;
     }
 }
 
-void reverseNumber()
+int reverseNumber()
 {
     int n;
     printf("Now enter your number here: \n");
@@ -124,9 +111,10 @@ void reverseNumber()
         n = n / 10;
     }
 
-    printf("Reverse of your number is %d\n", rev);
+    // printf("Reverse of your number is %d\n", rev);
+    return rev;
 }
-void sumOfDigits()
+int sumOfDigits()
 {
     int n;
     printf("Now enter your number here: \n");
@@ -141,7 +129,8 @@ void sumOfDigits()
         n = n / 10;
     }
 
-    printf("The sum of digits of your number is %d\n", sum);
+    // printf("The sum of digits of your number is %d\n", sum);
+    return sum;
 }
 
 int main()
@@ -165,27 +154,64 @@ int main()
 
     if (task == 1)
     {
-        checkOddEven();
+        if (checkOddEven())
+        {
+            printf("Even Number\n");
+        }
+        else
+        {
+            printf("Odd Number\n");
+        }
     }
     else if (task == 2)
     {
-        checkPrime();
+        if (checkPrime())
+        {
+            printf("Prime Number");
+        }
+        else
+        {
+            printf("Not a prime number");
+        }
     }
     else if (task == 3)
     {
-        checkPalindromeNumber();
+        if (checkPalindromeNumber())
+        {
+            printf("Palindrome Number");
+        }
+        else
+        {
+            printf("Not a Palindrome Number");
+        }
     }
     else if (task == 4)
     {
-        checkNegativePositive();
+        int result = checkNegativePositive();
+
+        // Optional: use return value for some logic
+        if (result == 1)
+        {
+            printf("Return value = 1 (positive)\n");
+        }
+        else if (result == -1)
+        {
+            printf("Return value = -1 (negative)\n");
+        }
+        else
+        {
+            printf("Return value = 0 (zero)\n");
+        }
     }
     else if (task == 5)
     {
-        reverseNumber();
+        int result = reverseNumber();
+        printf("Reverse of your number is %d\n", result);
     }
     else if (task == 6)
     {
-        sumOfDigits();
+        int result = sumOfDigits();
+        printf("The sum of digits of your number is %d\n", result);
     }
 
     return 0;

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void checkPerfectNumberRange()
+int checkPerfectNumberRange()
 {
     int n;
     printf("Enter your number here: \n");
@@ -32,6 +32,7 @@ void checkPerfectNumberRange()
             printf("%d is a perfect number.\n",i);
         }
     }
+    return 0;
 
     
 }

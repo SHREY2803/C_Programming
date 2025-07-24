@@ -12,7 +12,7 @@ int calDigits(int n)
     return digits;
 }
 
-void checkArmstrongRange()
+int checkArmstrongRange()
 {
     int n;
 
@@ -37,6 +37,7 @@ void checkArmstrongRange()
             printf("%d is a armstrong number\n", i);
         }
     }
+    return 0;
 }
 
 int main()

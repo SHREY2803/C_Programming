@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void checkPrimeRange()
+int checkPrimeRange()
 {
     int n;
     printf("Enter your number here: \n");
@@ -36,6 +36,7 @@ void checkPrimeRange()
             printf("%d is a prime number \n", i);
         }
     }
+    return 0;
 }
 
 int main()
