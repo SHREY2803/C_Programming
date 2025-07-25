@@ -1,14 +1,14 @@
 #include <stdio.h>
 
-void checkPalindromeNumber(int n)
+void checkPalindromeNumber(int *n)
 {
-    if (n < 0)
+    if (*n < 0)
     {
         printf("negative number is not a palindrome.");
         return;
     }
 
-    int temp = n;
+    int temp = *n;
     int rev = 0;
 
     while (temp)
@@ -18,7 +18,7 @@ void checkPalindromeNumber(int n)
         temp = temp / 10;
     }
 
-    if (rev == n)
+    if (rev == *n)
     {
         printf("Palindrome Number\n");
     }
@@ -34,6 +34,6 @@ int main()
     printf("Enter your number here: \n");
     scanf("%d", &n);
     
-    checkPalindromeNumber(n);
+    checkPalindromeNumber(&n);
     return 0;
 }

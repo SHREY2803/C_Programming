@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <math.h>
 
-void checkPerfectNumber(int n)
+void checkPerfectNumber(int *n)
 {
 
-    if (n <= 1)
+    if (*n <= 1)
     {
         printf("Not a perfect number\n");
         return;
@@ -14,11 +14,11 @@ void checkPerfectNumber(int n)
 
     int i = 2;
 
-    while (i <= sqrt(n))
+    while (i <= sqrt(*n))
     {
-        if (n % i == 0)
+        if (*n % i == 0)
         {
-            int pair = n / i;
+            int pair = *n / i;
             if (i != pair)
             {
                 sum = sum + i + pair;
@@ -31,7 +31,7 @@ void checkPerfectNumber(int n)
         i++;
     }
 
-    if (sum == n)
+    if (sum == *n)
     {
         printf("Perfect number\n");
     }
@@ -46,7 +46,7 @@ int main()
     int n;
     printf("Enter your number here: \n");
     scanf("%d", &n);
-    checkPerfectNumber(n);
+    checkPerfectNumber(&n);
 
     return 0;
 }

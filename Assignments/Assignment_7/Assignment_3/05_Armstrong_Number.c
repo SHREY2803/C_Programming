@@ -22,11 +22,11 @@ int calDigits(int n)
     return digits;
 }
 
-void checkArmstrongNumber(int n)
+void checkArmstrongNumber(int *n)
 {
     int arm = 0;
-    int digits = calDigits(n);
-    int temp = n;
+    int digits = calDigits(*n);
+    int temp = *n;
 
     while (temp)
     {
@@ -35,7 +35,7 @@ void checkArmstrongNumber(int n)
         temp = temp / 10;
     }
 
-    if (arm == n)
+    if (arm == *n)
     {
         printf("It is an Armstrong number.\n");
     }
@@ -51,6 +51,6 @@ int main()
     printf("Enter your number: \n");
     scanf("%d", &n);
 
-    checkArmstrongNumber(n);
+    checkArmstrongNumber(&n);
     return 0;
 }

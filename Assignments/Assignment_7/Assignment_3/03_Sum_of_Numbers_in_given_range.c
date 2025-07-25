@@ -1,23 +1,23 @@
 #include <stdio.h>
 
-void sumOfNum(int n1, int n2)
+void sumOfNum(int *n1, int *n2)
 {
     int sum = 0;
 
-    if (n1 < n2)
+    if (*n1 < *n2)
     {
-        while (n1 <= n2)
+        while (*n1 <= *n2)
         {
-            sum = sum + n1;
-            n1++;
+            sum = sum + (*n1);
+            (*n1)++;
         }
     }
     else
     {
-        while (n2 <= n1)
+        while (*n2 <= *n1)
         {
-            sum = sum + n2;
-            n2++;
+            sum = sum + (*n2);
+            (*n2)++;
         }
     }
 
@@ -32,6 +32,6 @@ int main()
     scanf("%d", &n1);
     scanf("%d", &n2);
 
-    sumOfNum(n1,n2);
+    sumOfNum(&n1, &n2);
     return 0;
 }

@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-void checkPrime(int n)
+void checkPrime(int *n)
 {
 
-    if (n <= 1)
+    if (*n <= 1)
     {
         printf("Not a prime number.\n");
         return;
@@ -12,12 +12,12 @@ void checkPrime(int n)
     int count = 0;
     int i = 1;
 
-    while (i * i <= n)
+    while (i * i <= *n)
     {
-        if (n % i == 0)
+        if (*n % i == 0)
         {
             count++;
-            if (n / i != i)
+            if (*n / i != i)
             {
                 count++;
             }
@@ -45,7 +45,7 @@ int main()
     printf("Enter the number here: \n");
     scanf("%d", &n);
 
-    checkPrime(n);
+    checkPrime(&n);
 
     return 0;
 }

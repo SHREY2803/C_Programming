@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-void findFirstLastDigitSum(int n)
+void findFirstLastDigitSum(int *n)
 {
-    int ld = n % 10;
+    int ld = *n % 10;
     int sum = 0;
 
-    int fd = n;
+    int fd = *n;
     while (fd >= 10)
     {
         fd = fd / 10;
@@ -21,7 +21,7 @@ int main()
     printf("Enter your number here: \n");
     scanf("%d", &n);
 
-    findFirstLastDigitSum(n);
+    findFirstLastDigitSum(&n);
 
     return 0;
 }
