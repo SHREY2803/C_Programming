@@ -1,16 +1,16 @@
 #include <stdio.h>
 
 // Type 2 41Function
-void checkPalindrome(int n)
+void checkPalindrome(int *n)
 {
 
-    if (n < 0)
+    if (*n < 0)
     {
         printf("Negative numbers are not a palindrome numbers.\n");
         return;
     }
 
-    int temp = n;
+    int temp = *n;
     int rev = 0;
 
     while (temp)
@@ -20,7 +20,7 @@ void checkPalindrome(int n)
         temp = temp / 10;
     }
 
-    if (rev == n)
+    if (rev == *n)
     {
         printf("Your number is a palindrome number\n");
     }
@@ -36,6 +36,6 @@ int main()
     printf("Enter your number here: \n");
     scanf("%d", &n);
 
-    checkPalindrome(n);
+    checkPalindrome(&n);
     return 0;
 }

@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <ctype.h>
 
-void UpperCaseOrLowerCase(char ch)
+void UpperCaseOrLowerCase(char *ch)
 {
 
-    if (!isalpha(ch))
+    if (!isalpha(*ch))
     {
         printf("Your character should be an alphabet\n");
     }
     else
     {
-        if (ch >= 'A' && ch <= 'Z')
+        if (*ch >= 'A' && *ch <= 'Z')
         {
             printf("Your character is a UpperCase character.");
         }
@@ -27,6 +27,6 @@ int main()
     printf("Enter your character here: \n");
     scanf("%c", &ch);
 
-    UpperCaseOrLowerCase(ch);
+    UpperCaseOrLowerCase(&ch);
     return 0;
 }

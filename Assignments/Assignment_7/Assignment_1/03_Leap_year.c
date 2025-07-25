@@ -8,13 +8,13 @@ int main()
     printf("Enter the year number to check whether it is leap year or not: \n");
     scanf("%d", &year);
 
-    checkLeapYear(year); // function call
+    checkLeapYear(&year); // function call
     return 0;
 }
 
-void checkLeapYear(int year) // function defination
+void checkLeapYear(int *year) // function defination
 {
-    if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+    if ((*year % 4 == 0 && *year % 100 != 0) || *year % 400 == 0)
     {
         printf("It is a leap year\n");
     }
