@@ -1,21 +1,21 @@
 #include <stdio.h>
 
-void gradeCalculator(double marks)
+void gradeCalculator(double *marks)
 {
 
-    if (marks >= 75)
+    if (*marks >= 75)
     {
         printf("Distinction\n");
     }
-    else if (marks >= 65 && marks < 75)
+    else if (*marks >= 65 && *marks < 75)
     {
         printf("First Class\n");
     }
-    else if (marks >= 55 && marks < 65)
+    else if (*marks >= 55 && *marks < 65)
     {
         printf("Second Class\n");
     }
-    else if (marks >= 40 && marks < 55)
+    else if (*marks >= 40 && *marks < 55)
     {
         printf("Pass \n");
     }
@@ -32,6 +32,6 @@ int main()
     printf("Enter your marks here: \n");
     scanf("%lf", &marks);
 
-    gradeCalculator(marks);
+    gradeCalculator(&marks);
     return 0;
 }

@@ -1,32 +1,32 @@
 #include <stdio.h>
 
-void sampleCalculator(double n1, double n2, char op)
+void sampleCalculator(double *n1, double *n2, char *op)
 {
     double result;
 
-    if (op == '+')
+    if (*op == '+')
     {
-        result = n1 + n2;
+        result = *n1 + *n2;
         printf("Result = %0.2lf\n", result);
     }
-    else if (op == '-')
+    else if (*op == '-')
     {
-        result = n1 - n2;
+        result = *n1 - *n2;
         printf("Result = %0.2lf\n", result);
     }
-    else if (op == '*')
+    else if (*op == '*')
     {
-        result = n1 * n2;
+        result = (*n1) * (*n2);
         printf("Result = %0.2lf\n", result);
     }
-    else if (op == '/')
+    else if (*op == '/')
     {
-        result = n1 / n2;
+        result = *n1 / *n2;
         printf("Result = %0.2lf\n", result);
     }
-    else if (op == '%')
+    else if (*op == '%')
     {
-        result = (int)(n1) % (int)(n2);
+        result = (int)(*n1) % (int)(*n2);
         printf("Result = %0.2lf\n", result);
     }
     else
@@ -49,7 +49,7 @@ int main()
     printf("Enter your operator for desired operation:\n");
     scanf(" %c", &op);
 
-    sampleCalculator(n1, n2, op);
+    sampleCalculator(&n1, &n2, &op);
 
     return 0;
 }

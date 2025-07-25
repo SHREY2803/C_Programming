@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-void checkGreatestNumber(int a, int b, int c)
+void checkGreatestNumber(int *a, int *b, int *c)
 {
 
-    if (a > b)
+    if (*a > *b)
     {
-        if (a > c)
+        if (*a > *c)
         {
             printf("a is greatest.");
         }
@@ -14,7 +14,7 @@ void checkGreatestNumber(int a, int b, int c)
             printf("c is greatest");
         }
     }
-    else if (b > c)
+    else if (*b > *c)
     {
         printf("b is greatest");
     }
@@ -32,6 +32,6 @@ int main()
     scanf("%d", &b);
     scanf("%d", &c);
 
-    checkGreatestNumber(a, b, c);
+    checkGreatestNumber(&a, &b, &c);
     return 0;
 }

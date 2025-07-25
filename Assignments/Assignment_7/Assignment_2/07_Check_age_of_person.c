@@ -1,16 +1,16 @@
 #include <stdio.h>
 
-void checkAgePerson(int age)
+void checkAgePerson(int *age)
 {
-    if (age >= 60)
+    if (*age >= 60)
     {
         printf("You fall under the Senior category.\n");
     }
-    else if (age < 60 && age >= 20)
+    else if (*age < 60 && *age >= 20)
     {
         printf("You fall under the Adult category.\n");
     }
-    else if (age < 20 && age >= 12)
+    else if (*age < 20 && *age >= 12)
     {
         printf("You fall under the Teenager category.\n");
     }
@@ -27,7 +27,7 @@ int main()
     printf("Enter your age here: \n");
     scanf("%d", &age);
 
-    checkAgePerson(age);
+    checkAgePerson(&age);
 
     return 0;
 }
