@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-void checkPrimeRange(int n)
+void checkPrimeRange(int *n)
 {
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= *n; i++)
     {
 
         if (i <= 1)
@@ -41,7 +41,7 @@ int main()
     printf("Enter your number here: \n");
     scanf("%d", &n);
 
-    checkPrimeRange(n);
+    checkPrimeRange(&n);
 
     return 0;
 }

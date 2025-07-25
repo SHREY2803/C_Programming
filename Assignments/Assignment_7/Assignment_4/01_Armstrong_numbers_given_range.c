@@ -12,9 +12,9 @@ int calDigits(int n)
     return digits;
 }
 
-void checkArmstrongRange(int n)
+void checkArmstrongRange(int *n)
 {
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= *n; i++)
     {
         int arm = 0;
         int temp = i;
@@ -41,6 +41,6 @@ int main()
     printf("Enter your number here: \n");
     scanf("%d", &n);
 
-    checkArmstrongRange(n);
+    checkArmstrongRange(&n);
     return 0;
 }

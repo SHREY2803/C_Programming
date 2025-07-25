@@ -16,10 +16,10 @@ int factorialNum(int n)
     return fac;
 }
 
-void checkStrongNumberRange(int n)
+void checkStrongNumberRange(int *n)
 {
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= *n; i++)
     {
         int strong = 0;
         int temp = i;
@@ -44,6 +44,6 @@ int main()
     printf("Enter your number here: \n");
     scanf("%d", &n);
 
-    checkStrongNumberRange(n);
+    checkStrongNumberRange(&n);
     return 0;
 }

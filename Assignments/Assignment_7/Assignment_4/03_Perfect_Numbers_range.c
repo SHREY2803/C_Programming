@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-void checkPerfectNumberRange(int n)
+void checkPerfectNumberRange(int *n)
 {
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= *n; i++)
     {
         if (i <= 1)
         {
@@ -38,7 +38,7 @@ int main()
     printf("Enter your number here: \n");
     scanf("%d", &n);
 
-    checkPerfectNumberRange(n);
+    checkPerfectNumberRange(&n);
     
     return 0;
 }

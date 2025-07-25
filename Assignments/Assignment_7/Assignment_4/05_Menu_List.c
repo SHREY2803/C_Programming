@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-void checkOddEven(int num)
+void checkOddEven(int *num)
 {
-    if (num % 2 == 0)
+    if (*num % 2 == 0)
     {
         printf("Number is even\n");
     }
@@ -12,10 +12,10 @@ void checkOddEven(int num)
     }
 }
 
-void checkPrime(int n)
+void checkPrime(int *n)
 {
 
-    if (n <= 1)
+    if (*n <= 1)
     {
         printf("Not a prime number.\n");
         return;
@@ -24,12 +24,12 @@ void checkPrime(int n)
     int count = 0;
     int i = 1;
 
-    while (i * i <= n)
+    while (i * i <= *n)
     {
-        if (n % i == 0)
+        if (*n % i == 0)
         {
             count++;
-            if (n / i != i)
+            if (*n / i != i)
             {
                 count++;
             }
@@ -51,15 +51,15 @@ void checkPrime(int n)
     }
 }
 
-void checkPalindromeNumber(int n)
+void checkPalindromeNumber(int *n)
 {
-    if (n < 0)
+    if (*n < 0)
     {
         printf("negative number is not a palindrome.");
         return;
     }
 
-    int temp = n;
+    int temp = *n;
     int rev = 0;
 
     while (temp)
@@ -69,7 +69,7 @@ void checkPalindromeNumber(int n)
         temp = temp / 10;
     }
 
-    if (rev == n)
+    if (rev == *n)
     {
         printf("Palindrome Number\n");
     }
@@ -79,13 +79,13 @@ void checkPalindromeNumber(int n)
     }
 }
 
-void checkNegativePositive(int n)
+void checkNegativePositive(int *n)
 {
-    if (n > 0)
+    if (*n > 0)
     {
         printf("Your number is a positive a number. \n");
     }
-    else if (n < 0)
+    else if (*n < 0)
     {
         printf("Your number is a negative number. \n");
     }
@@ -95,27 +95,27 @@ void checkNegativePositive(int n)
     }
 }
 
-void reverseNumber(int n)
+void reverseNumber(int *n)
 {
     int rev = 0;
-    while (n)
+    while (*n)
     {
-        int ld = n % 10;
+        int ld = *n % 10;
         rev = (rev * 10) + ld;
-        n = n / 10;
+        *n = *n / 10;
     }
 
     printf("Reverse of your number is %d\n", rev);
 }
-void sumOfDigits(int n)
+void sumOfDigits(int *n)
 {
     int sum = 0;
 
-    while (n)
+    while (*n)
     {
-        int ld = n % 10;
+        int ld = *n % 10;
         sum += ld;
-        n = n / 10;
+        *n = *n / 10;
     }
 
     printf("The sum of digits of your number is %d\n", sum);
@@ -146,27 +146,27 @@ int main()
 
     if (task == 1)
     {
-        checkOddEven(n);
+        checkOddEven(&n);
     }
     else if (task == 2)
     {
-        checkPrime(n);
+        checkPrime(&n);
     }
     else if (task == 3)
     {
-        checkPalindromeNumber(n);
+        checkPalindromeNumber(&n);
     }
     else if (task == 4)
     {
-        checkNegativePositive(n);
+        checkNegativePositive(&n);
     }
     else if (task == 5)
     {
-        reverseNumber(n);
+        reverseNumber(&n);
     }
     else if (task == 6)
     {
-        sumOfDigits(n);
+        sumOfDigits(&n);
     }
    
 
