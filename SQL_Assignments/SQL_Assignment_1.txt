@@ -1,0 +1,192 @@
+O1. Login to MySQL and view all databases already present. You should get following result :
+
+A1:  show databases;
+
++--------------------+
+| Database           |
++--------------------+
+| first_db           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+
+
+Q2. Write an SQL statement to create a simple table countries including columns country_id, country_name and region_id. After this display the structure of
+table as below :
+
+A2:
+create table Countries 
+-> (country_id int(11), 
+-> country_name varchar(20), 
+-> region_id int(11));
+
+desc Countries;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| country_id   | int         | YES  |     | NULL    |       |
+| country_name | varchar(20) | YES  |     | NULL    |       |
+| region_id    | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+
+Q3. Write an SQL statement to create a table named jobs including columns job_id, job_title, min_salary, max_salary and check whether the max_salary amount exceeding the upper limit 25000. Also set job_id as primary key and entering null values for job_title is not allowed.
+
+A3: 
+create table Jobs 
+-> ( job_id int primary key, 
+-> job_title varchar(20) not null, 
+-> min_salary int not null, 
+-> max_salary int check (max_salary<=25000));
+
+show create table Jobs;
+
+| Jobs  | CREATE TABLE `jobs` (
+  `job_id` int NOT NULL,
+  `job_title` varchar(20) NOT NULL,
+  `min_salary` int NOT NULL,
+  `max_salary` int DEFAULT NULL,
+  PRIMARY KEY (`job_id`),
+  CONSTRAINT `jobs_chk_1` CHECK ((`max_salary` <= 25000))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
+
+desc Jobs;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| job_id     | int         | NO   | PRI | NULL    |       |
+| job_title  | varchar(20) | NO   |     | NULL    |       |
+| min_salary | int         | NO   |     | NULL    |       |
+| max_salary | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+
+
+Q4. Write a SQL statement to create a table named job_histry including columns employee_id, start_date, end_date, job_id and department_id 
+
+A4. :
+
+create table Job_History
+    -> (employee_id int not null,
+    -> start_date date not null,
+    -> end_date date not null,
+    -> job_id int not null,
+    -> department_id int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc Job_History;
++---------------+------+------+-----+---------+-------+
+| Field         | Type | Null | Key | Default | Extra |
++---------------+------+------+-----+---------+-------+
+| employee_id   | int  | NO   |     | NULL    |       |
+| start_date    | date | NO   |     | NULL    |       |
+| end_date      | date | NO   |     | NULL    |       |
+| job_id        | int  | NO   |     | NULL    |       |
+| department_id | int  | YES  |     | NULL    |       |
++---------------+------+------+-----+---------+-------+
+
+Q5. Write an SQL statement to alter a table named countries to make sure that no duplicate data against column country_id will be allowed at the time of insertion.
+
+A5. : 
+
+alter table countries
+    -> add constraint uq_country_id unique(country_id);
+
+
+Q6.Write an SQL statement to create a table named jobs including columns job_id, job_title, min_salary and max_salary, and make sure that, the default value for job_title is blank and min_salary is 8000 and max_salary is NULL will be entered automatically at the time of insertion if no value assigned for the specified columns.
+
+A6:
+mysql> create table Jobs
+    -> (job_id int primary key,
+    -> job_title varchar(40) default '',
+    -> min_salary int default 8000,
+    -> max_salary int default null);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc Jobs;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| job_id     | int         | NO   | PRI | NULL    |       |
+| job_title  | varchar(40) | YES  |     |         |       |
+| min_salary | int         | YES  |     | 8000    |       |
+| max_salary | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+Q7. Create a Department table with following structure
+A7 :
+create table Department
+    -> (DEPARTMENT_ID decimal(4,0) not null default 0,
+    -> DEPARTMENT_NAME varchar(30) not null default 'NULL',
+    -> MANAGER_ID DECIMAL(6,0) not null default 0,
+    -> LOCATION_ID DECIMAL(4,0) default NULL,
+    -> PRIMARY KEY (DEPARTMENT_ID, MANAGER_ID);
+     	
+mysql> desc Department;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| DEPARTMENT_ID   | decimal(4,0) | NO   | PRI | 0       |       |
+| DEPARTMENT_NAME | varchar(30)  | NO   |     | NULL    |       |
+| MANAGER_ID      | decimal(6,0) | NO   | PRI | 0       |       |
+| LOCATION_ID     | decimal(4,0) | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+
+Q8. Write an SQL statement to create a table employees including columns employee_id, first_name, last_name, email, phone_number hire_date, job_id, salary, commission, manager_id and department_id and make sure that, the employee_id column does not contain any duplicate value at the time of insertion and the foreign key columns combined by department_id and manager_ columns contain only those unique combination values, which combinations are exists in the departments table.
+
+A8 :
+mysql> create table Employees
+    -> (EMPLOYEE_ID int primary key,
+    -> FIRST_NAME varchar(40) not null,
+    -> LAST_NAME varchar(40) not null,
+    -> EMAIL varchar(40) unique,
+    -> PHONE_NUMBER int(10) unique,
+    -> HIRE_DATE date not null,
+    -> salary decimal(8,4) not null,
+    -> commission decimal(5,4) not null,
+    -> DEPARTMENT_ID decimal(4,0) not null default 0,
+    -> MANAGER_ID decimal(6,0) not null default 0);
+Query OK, 0 rows affected, 1 warning (0.04 sec)
+
+mysql> DESC Employees;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| EMPLOYEE_ID   | int          | NO   | PRI | NULL    |       |
+| FIRST_NAME    | varchar(40)  | NO   |     | NULL    |       |
+| LAST_NAME     | varchar(40)  | NO   |     | NULL    |       |
+| EMAIL         | varchar(40)  | YES  | UNI | NULL    |       |
+| PHONE_NUMBER  | int          | YES  | UNI | NULL    |       |
+| HIRE_DATE     | date         | NO   |     | NULL    |       |
+| salary        | decimal(8,4) | NO   |     | NULL    |       |
+| commission    | decimal(5,4) | NO   |     | NULL    |       |
+| DEPARTMENT_ID | decimal(4,0) | NO   |     | 0       |       |
+| MANAGER_ID    | decimal(6,0) | NO   |     | 0       |       |
++---------------+--------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> alter table Employees
+    -> add constraint fk_emp
+    -> foreign key (DEPARTMENT_ID,MANAGER_ID)
+    -> references Department (DEPARTMENT_ID,MANAGER_ID);
+
+
+mysql> desc Employees;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| EMPLOYEE_ID   | int          | NO   | PRI | NULL    |       |
+| FIRST_NAME    | varchar(40)  | NO   |     | NULL    |       |
+| LAST_NAME     | varchar(40)  | NO   |     | NULL    |       |
+| EMAIL         | varchar(40)  | YES  | UNI | NULL    |       |
+| PHONE_NUMBER  | int          | YES  | UNI | NULL    |       |
+| HIRE_DATE     | date         | NO   |     | NULL    |       |
+| salary        | decimal(8,4) | NO   |     | NULL    |       |
+| commission    | decimal(5,4) | NO   |     | NULL    |       |
+| DEPARTMENT_ID | decimal(4,0) | NO   | MUL | 0       |       |
+| MANAGER_ID    | decimal(6,0) | NO   |     | 0       |       |
++---------------+--------------+------+-----+---------+-------+
+
