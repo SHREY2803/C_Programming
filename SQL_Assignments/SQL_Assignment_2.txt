@@ -363,3 +363,82 @@ mysql> select * from Books;
 +---------+-------------------------------+----------+----------------+------+
 7 rows in set (0.00 sec)
 
+
+Q21. Rename the table Lib_Issue to Issue.
+
+A21
+
+mysql> rename table Lib_Issue to Issue;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc Lib_Issue;
+ERROR 1146 (42S02): Table 'first_db.lib_issue' doesn't exist
+mysql> desc Issue;
++--------------+------+------+-----+---------+-------+
+| Field        | Type | Null | Key | Default | Extra |
++--------------+------+------+-----+---------+-------+
+| Lib_Issue_Id | int  | YES  |     | NULL    |       |
+| Book_No      | int  | YES  |     | NULL    |       |
+| Member_Id    | int  | YES  |     | NULL    |       |
+| Issue_Date   | date | YES  |     | NULL    |       |
+| Return_Date  | date | YES  |     | NULL    |       |
++--------------+------+------+-----+---------+-------+
+
+Q22. Drop table Issue.
+
+A22. 
+mysql> drop table Issue;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc Issue;
+ERROR 1146 (42S02): Table 'first_db.issue' doesn't exist
+
+Q23. 
+As per the given structure Create table Issue again with following 
+constraints. 
+ Lib_Issue_Id-Primary key 
+ Book_No-  foreign key 
+ Member_id - foreign key 
+ Issue_date 
+ 
+Return_date 
+
+A23. 
+mysql> create table Issue
+    -> (Lib_Issue_Id int primary key,
+    -> Book_No int,
+    -> Member_Id int,
+    -> Issue_date Date not null,
+    -> Return_date date,
+    -> constraint fk_book foreign key(Book_No) references Books(Book_No),
+    -> constraint fk_member foreign key(Member_Id) references Members(Member_id));
+Query OK, 0 rows affected (0.05 sec)
+
+Q24. Insert following data into Issue table
+
+A24.
+
+mysql> INSERT INTO Issue (Lib_Issue_Id, Book_No, Member_id, Issue_date)
+    -> VALUES
+    ->     (7001, 101, 1, '2006-12-10'),
+    ->     (7002, 102, 2, '2006-12-25'),
+    ->     (7003, 104, 1, '2006-01-15'),
+    ->     (7004, 101, 1, '2006-07-04'),
+    ->     (7005, 104, 2, '2006-11-15'),
+    ->     (7006, 101, 3, '2006-02-18');
+Query OK, 6 rows affected (0.01 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+Q25. Remove the constraints on Issue table 
+
+mysql> ALTER TABLE Issue DROP PRIMARY KEY;
+Query OK, 6 rows affected (0.06 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Issue DROP FOREIGN KEY fk_book;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE Issue DROP FOREIGN KEY fk_member;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
