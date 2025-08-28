@@ -1,0 +1,365 @@
+Q1. Create the table Member, Books and Issue without any constraints as mentioned in the schema description above. 
+
+A1.
+ 
+create table Members
+    -> (Member_Id int,
+    -> Member_Name varchar(30),
+    -> Member_Address varchar(30),
+    -> Acc_Open_Date date,
+    -> Membership_type varchar(20),
+    -> Fees_paid int,
+    -> Max_Books_Allowed int,
+    -> Penalty_Amount decimal(7,2));
+
+mysql> desc Members;
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| Member_Id         | int          | YES  | UNI | NULL    |       |
+| Member_Name       | varchar(30)  | NO   |     | NULL    |       |
+| Member_Address    | varchar(30)  | NO   |     | NULL    |       |
+| Acc_Open_Date     | date         | NO   |     | NULL    |       |
+| Membership_type   | varchar(20)  | YES  |     | NULL    |       |
+| Fees_paid         | int          | YES  |     | 0       |       |
+| Max_Books_Allowed | int          | NO   |     | NULL    |       |
+| Penalty_Amount    | decimal(7,2) | YES  |     | 0.00    |       |
++-------------------+--------------+------+-----+---------+-------+
+
+
+
+create table Books
+    -> (Book_No int,
+    -> Book_Name varchar(30),
+    -> Author_Name varchar(30),
+    -> Cost decimal(7,2),
+    -> Category char(10));
+
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| Book_No     | int          | NO   | PRI | NULL    |       |
+| Book_Name   | varchar(30)  | NO   |     | NULL    |       |
+| Author_Name | varchar(30)  | NO   |     | NULL    |       |
+| Cost        | decimal(7,2) | NO   |     | NULL    |       |
+| Category    | char(10)     | NO   |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+
+
+create table Issue
+    -> (Lib_Issue_Id int,
+    -> Book_No int,
+    -> Member_Id int,
+    -> Issue_Date date,
+    -> Retrun_Date date);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc Issue;
++--------------+------+------+-----+---------+-------+
+| Field        | Type | Null | Key | Default | Extra |
++--------------+------+------+-----+---------+-------+
+| Lib_Issue_Id | int  | YES  |     | NULL    |       |
+| Book_No      | int  | YES  |     | NULL    |       |
+| Member_Id    | int  | YES  |     | NULL    |       |
+| Issue_Date   | date | YES  |     | NULL    |       |
+| Retrun_Date  | date | YES  |     | NULL    |       |
++--------------+------+------+-----+---------+-------+
+
+Q3. Drop the Member table 
+
+A3.
+mysql> drop table Members;
+Query OK, 0 rows affected (0.02 sec)
+
+
+Q4. Create the table Member again as per the schema description with the 
+following constraints. 
+a. 
+b. 
+Member_Id – Primary Key 
+Membership_type - ‘Lifetime’,’ Annual’, ‘Half Yearly’,’ Quarterly’ 
+
+A4. 
+create table Members
+    -> (Member_Id int primary key,
+    -> Member_Name varchar(30) not null,
+    -> Member_Address varchar(30) not null,
+    -> Acc_Open_Date date not null,
+    -> Membership_type varchar(20) check(Membership_type in ('Lifetime', 'Annual', 'Half Yearly', 'Quarterly')),
+    -> Fees_paid int default 0 check(Fees_paid>=0),
+    -> Max_Books_Allowed int not null check(Max_Books_Allowed >= 0),
+    -> Penalty_Amount decimal(7,2) default 0.00 check(Penalty_Amount >= 0));
+
+
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| Member_Id         | int          | NO   | PRI | NULL    |       |
+| Member_Name       | varchar(30)  | NO   |     | NULL    |       |
+| Member_Address    | varchar(30)  | NO   |     | NULL    |       |
+| Acc_Open_Date     | date         | NO   |     | NULL    |       |
+| Membership_type   | varchar(20)  | YES  |     | NULL    |       |
+| Fees_paid         | int          | YES  |     | 0       |       |
+| Max_Books_Allowed | int          | NO   |     | NULL    |       |
+| Penalty_Amount    | decimal(7,2) | YES  |     | 0.00    |       |
++-------------------+--------------+------+-----+---------+-------+
+
+Q5. Modify the table Member increase the width of the member name to 30 characters. 
+
+A5.
+
+
+
+mysql> alter table Issue
+    -> add column Reference char(30) not null;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Issue;
++--------------+----------+------+-----+---------+-------+
+| Field        | Type     | Null | Key | Default | Extra |
++--------------+----------+------+-----+---------+-------+
+| Lib_Issue_Id | int      | YES  |     | NULL    |       |
+| Book_No      | int      | YES  |     | NULL    |       |
+| Member_Id    | int      | YES  |     | NULL    |       |
+| Issue_Date   | date     | YES  |     | NULL    |       |
+| Return_Date  | date     | YES  |     | NULL    |       |
+| Reference    | char(30) | NO   |     | NULL    |       |
++--------------+----------+------+-----+---------+-------+
+
+Q7. Delete/Drop the column Reference from Issue. 
+
+A7.
+mysql> alter table Issue
+    -> drop column Reference;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Issue;
++--------------+------+------+-----+---------+-------+
+| Field        | Type | Null | Key | Default | Extra |
++--------------+------+------+-----+---------+-------+
+| Lib_Issue_Id | int  | YES  |     | NULL    |       |
+| Book_No      | int  | YES  |     | NULL    |       |
+| Member_Id    | int  | YES  |     | NULL    |       |
+| Issue_Date   | date | YES  |     | NULL    |       |
+| Return_Date  | date | YES  |     | NULL    |       |
++--------------+------+------+-----+---------+-------+
+
+Q8. Rename the table Issue to Lib_Issue.
+
+A8. 
+mysql> rename table Issue to Lib_Issue;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_first_db |
++--------------------+
+| books              |
+| countries          |
+| department         |
+| emp_details        |
+| employees          |
+| job_history        |
+| jobs               |
+| lib_issue          |
+| members            |
+| sample_jobs        |
+| student            |
++--------------------+
+
+
+Q9. Insert following data in table Member 
+
+A9.
+
+mysql> insert into Members
+    -> values
+    -> ('1', 'Richa Sharma', 'Pune', '10-12-05', 'Lifetime', '25000', '5', '50');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from Customers;
+ERROR 1146 (42S02): Table 'first_db.customers' doesn't exist
+mysql> select * from Members;
++-----------+--------------+----------------+---------------+-----------------+-----------+-------------------+----------------+
+| Member_Id | Member_Name  | Member_Address | Acc_Open_Date | Membership_type | Fees_paid | Max_Books_Allowed | Penalty_Amount |
++-----------+--------------+----------------+---------------+-----------------+-----------+-------------------+----------------+
+|         1 | Richa Sharma | Pune           | 2010-12-05    | Lifetime        |     25000 |                 5 |          50.00 |
++-----------+--------------+----------------+---------------+-----------------+-----------+-------------------+----------------+
+
+mysql> insert into Members
+    -> values
+    -> ('2', 'Garima Sen', 'Pune', '25-8-24', 'Annual', '1000', '3',null);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from Members;
++-----------+--------------+----------------+---------------+-----------------+-----------+-------------------+----------------+
+| Member_Id | Member_Name  | Member_Address | Acc_Open_Date | Membership_type | Fees_paid | Max_Books_Allowed | Penalty_Amount |
++-----------+--------------+----------------+---------------+-----------------+-----------+-------------------+----------------+
+|         1 | Richa Sharma | Pune           | 2010-12-05    | Lifetime        |     25000 |                 5 |          50.00 |
+|         2 | Garima Sen   | Pune           | 2025-08-24    | Annual          |      1000 |                 3 |           NULL |
++-----------+--------------+----------------+---------------+-----------------+-----------+-------------------+----------------+
+
+
+Q10. Insert at least 5 records with suitable data. 
+
+A10.
+insert into Members
+values
+('3', 'Shrey Kulkarni', 'Vadodara', '25-1-24', 'Annual', '1000', '4',1),
+('4', 'Shreya Kulkarni', 'Mumbai', '25-12-24', 'Annual', '1010', '4',1),
+('5', 'Shrey Kulkarni', 'Vadodara', '25-1-24', 'Annual', '1000', '4',1),
+('6', 'Shrey Kulkarni', 'Vadodara', '25-1-24', 'Annual', '1000', '4',1),
+('7', 'Shrey Kulkarni', 'Vadodara', '25-1-24', 'Annual', '1000', '4',1);
+
+
+Q11. Modify the column Member_name. Decrease the width of the member name to 20 characters. (If it does not allow state the reason for that)
+
+A11.
+
+mysql> alter table members
+    -> modify column Member_Name varchar(20);
+Query OK, 2 rows affected (0.05 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from members;
++-----------+--------------+----------------+---------------+-----------------+-----------+-------------------+----------------+
+| Member_Id | Member_Name  | Member_Address | Acc_Open_Date | Membership_type | Fees_paid | Max_Books_Allowed | Penalty_Amount |
++-----------+--------------+----------------+---------------+-----------------+-----------+-------------------+----------------+
+|         1 | Richa Sharma | Pune           | 2010-12-05    | Lifetime        |     25000 |                 5 |          50.00 |
+|         2 | Garima Sen   | Pune           | 2025-08-24    | Annual          |      1000 |                 3 |           NULL |
++-----------+--------------+----------------+---------------+-----------------+-----------+-------------------+----------------+
+
+Q12. Try to insert a record with Max_Books_Allowed = 110, Observe the error that comes.
+
+A12. 
+
+
+Q13. Generate another table named Member101 using a Create command along with a simple SQL query on member table.
+Q14. Add the constraints on columns max_books_allowed  and penalty_amt 
+as follows 
+a. max_books_allowed  < 100 
+b. penalty_amt maximum 1000 
+Also give names to the constraints. 
+
+
+A13. and A14.
+| member101 | CREATE TABLE `member101` (
+  `Member_id` int NOT NULL,
+  `Member_name` varchar(20) DEFAULT NULL,
+  `Max_books_allowed` int NOT NULL,
+  `Penalty_Amount` decimal(7,2) DEFAULT '0.00',
+  CONSTRAINT `book_limit` CHECK ((`Max_books_allowed` < 100)),
+  CONSTRAINT `penalty_amount` CHECK ((`Penalty_Amount` <= 1000))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
+
+
+Q15. Drop the table books.
+
+A15. mysql> drop table books;;
+Query OK, 0 rows affected (0.01 sec)
+
+
+Q16. Create table Books again as per the schema description with the following constraints. 
+
+A16.
+
+a. Book_No – Primary Key 
+b. Book_Name – Not Null 
+c. Category – System, Fiction, Database, RDBMS, Others. 
+
+mysql> create table books
+    -> (Book_No int primary key,
+    -> Book_Name varchar(30) not null,
+    -> Category varchar(30) check(Category in ('System', 'Fiction', 'Database', 'RDBMS', 'Others')));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc books;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Book_No   | int         | NO   | PRI | NULL    |       |
+| Book_Name | varchar(30) | NO   |     | NULL    |       |
+| Category  | varchar(30) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+Q17. Insert data in Book table as follows:
+
+A17
+mysql> insert into Books
+    -> values
+    -> ("102", "Oracle - Complete Ref", "Database", "Loni", "550"),
+    -> ("103", "Mastering SQL", "Database", "Loni", "250"),
+    -> ("104", "PL SQL-Ref", "Database", "Scott Urman", "750");
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from Books;
++---------+-----------------------+----------+---------------+------+
+| Book_No | Book_Name             | Category | Author        | Cost |
++---------+-----------------------+----------+---------------+------+
+|     101 | Let us C              | System   | Denis Ritchie |  450 |
+|     102 | Oracle - Complete Ref | Database | Loni          |  550 |
+|     103 | Mastering SQL         | Database | Loni          |  250 |
+|     104 | PL SQL-Ref            | Database | Scott Urman   |  750 |
++---------+-----------------------+----------+---------------+------+
+4 rows in set (0.00 sec)
+
+Q18. Insert more records in Book table.  
+A18 
+mysql> insert into Books
+    -> values
+    -> ("106", "Atomic Habits", "Others", "James Clear", "150");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from Books;
++---------+-------------------------------+----------+----------------+------+
+| Book_No | Book_Name                     | Category | Author         | Cost |
++---------+-------------------------------+----------+----------------+------+
+|     101 | Let us C                      | System   | Denis Ritchie  |  450 |
+|     102 | Oracle - Complete Ref         | Database | Loni           |  550 |
+|     103 | Mastering SQL                 | Database | Loni           |  250 |
+|     104 | PL SQL-Ref                    | Database | Scott Urman    |  750 |
+|     105 | Cracking the Coding Interview | Others   | Gayle Mcdowell | 1170 |
+|     106 | Atomic Habits                 | Others   | James Clear    |  150 |
+
+Q19. View the data in the tables using simple SQL query.
+
+A19.
+
+mysql> select * from Books;
++---------+-------------------------------+----------+----------------+------+
+| Book_No | Book_Name                     | Category | Author         | Cost |
++---------+-------------------------------+----------+----------------+------+
+|     101 | Let us C                      | System   | Denis Ritchie  |  450 |
+|     102 | Oracle - Complete Ref         | Database | Loni           |  550 |
+|     103 | Mastering SQL                 | Database | Loni           |  250 |
+|     104 | PL SQL-Ref                    | Database | Scott Urman    |  750 |
+|     105 | Cracking the Coding Interview | Others   | Gayle Mcdowell | 1170 |
+|     106 | Atomic Habits                 | Others   | James Clear    |  150 |
++---------+-------------------------------+----------+----------------+------+
+6 rows in set (0.00 sec)
+
+
+Q20. Insert into Book following data. 
+
+	105,  National Geographic, Adis Scott, 1000,  Science
+
+A20. 
+
+mysql> select * from Books;
++---------+-------------------------------+----------+----------------+------+
+| Book_No | Book_Name                     | Category | Author         | Cost |
++---------+-------------------------------+----------+----------------+------+
+|     101 | Let us C                      | System   | Denis Ritchie  |  450 |
+|     102 | Oracle - Complete Ref         | Database | Loni           |  550 |
+|     103 | Mastering SQL                 | Database | Loni           |  250 |
+|     104 | PL SQL-Ref                    | Database | Scott Urman    |  750 |
+|     105 | Cracking the Coding Interview | Others   | Gayle Mcdowell | 1170 |
+|     106 | Atomic Habits                 | Others   | James Clear    |  150 |
+|     107 | National Geographic           | Others   | Adis Scott     | 1000 |
++---------+-------------------------------+----------+----------------+------+
+7 rows in set (0.00 sec)
+
