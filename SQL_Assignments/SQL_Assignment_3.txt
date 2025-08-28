@@ -1,0 +1,130 @@
+Q1. Write a SQL statement to insert a record as follows:
+
+A1. 
+
+Employees:
+
+mysql> insert into employees
+    -> values
+    -> ("101", "Neena", "Kochar", "NKOCHHAR", "5121234568", "1987-06-18", "AD_VP", "17000", "0.00","10","200"),
+    -> ("102", "Lex", "De Haan", "LDEHAAN", "5121234569", "1987-06-19", "AD_VP", "17000", "0.00","10","200"),
+    -> ("103", "Alexander", "Hunold", "AHUNOLD", "5904234567", "1987-06-20", "IT_PROG", "9000", "0.00","60","103"),
+    -> ("104", "Bruce", "Ernst", "BERNST", "5904234568", "1987-06-21", "IT_PROG", "6000", "0.00","60","103"),
+    -> ("105", "David", "Austin", "DAUSTIN", "5904234569", "1987-06-22", "IT_PROG", "4800", "0.00","60","103"),
+    -> ("106", "Valli", "Pataballa", "VPATABAL", "5904234560", "1987-06-23", "IT_PROG", "4800", "0.00","60","103"),
+    -> ("107", "Diana", "Lorentz", "DLORENTZ", "5904235567", "1987-06-24", "IT_PROG", "4200", "0.00","30","114"),
+    -> ("108", "Nancy", "Greenberg", "NGREENE", "5151244569", "1987-06-25", "SA_MAN", "12000", "0.00","80","145"),
+    -> ("109", "Daniel", "Faviet", "DFAVIET", "5151244169", "1987-06-26", "SA_MAN", "9000", "0.00","80","145");
+
+
+mysql> select * from employees;
++-------------+------------+-----------+----------+--------------+------------+---------+-----------+------------+---------------+------------+
+| employee_id | first_name | last_name | email    | phone_number | hire_date  | job_id  | salary    | commission | DEPARTMENT_ID | MANAGER_ID |
++-------------+------------+-----------+----------+--------------+------------+---------+-----------+------------+---------------+------------+
+|         100 | Steven     | King      | SKING    | 5121234567   | 1987-06-17 | AD_PRES | 24000.000 |       0.00 |            10 |        200 |
+|         101 | Neena      | Kochar    | NKOCHHAR | 5121234568   | 1987-06-18 | AD_VP   | 17000.000 |       0.00 |            10 |        200 |
+|         102 | Lex        | De Haan   | LDEHAAN  | 5121234569   | 1987-06-19 | AD_VP   | 17000.000 |       0.00 |            10 |        200 |
+|         103 | Alexander  | Hunold    | AHUNOLD  | 5904234567   | 1987-06-20 | IT_PROG |  9000.000 |       0.00 |            60 |        103 |
+|         104 | Bruce      | Ernst     | BERNST   | 5904234568   | 1987-06-21 | IT_PROG |  6000.000 |       0.00 |            60 |        103 |
+|         105 | David      | Austin    | DAUSTIN  | 5904234569   | 1987-06-22 | IT_PROG |  4800.000 |       0.00 |            60 |        103 |
+|         106 | Valli      | Pataballa | VPATABAL | 5904234560   | 1987-06-23 | IT_PROG |  4800.000 |       0.00 |            60 |        103 |
+|         107 | Diana      | Lorentz   | DLORENTZ | 5904235567   | 1987-06-24 | IT_PROG |  4200.000 |       0.00 |            30 |        114 |
+|         108 | Nancy      | Greenberg | NGREENE  | 5151244569   | 1987-06-25 | SA_MAN  | 12000.000 |       0.00 |            80 |        145 |
+|         109 | Daniel     | Faviet    | DFAVIET  | 5151244169   | 1987-06-26 | SA_MAN  |  9000.000 |       0.00 |            80 |        145 |
++-------------+------------+-----------+----------+--------------+------------+---------+-----------+------------+---------------+------------+
+
+
+
+Department:
+mysql> insert into department
+    -> values
+    -> ("10", "Administration", "200", "1700"),
+    -> ("20", "Marketing", "201", "1800"),
+    -> ("30", "Purchasing", "114", "1700"),
+    -> ("40", "Human Resources", "203", "2400"),
+    -> ("50", "Shipping", "121", "1500"),
+    -> ("60", "IT", "103", "1400"),
+    -> ("70", "Public Relations", "204", "2700"),
+    -> ("80", "Sales", "145", "2500");
+
+mysql> select * from department;
++---------------+------------------+------------+-------------+
+| DEPARTMENT_ID | DEPARTMENT_NAME  | MANAGER_ID | LOCATION_ID |
++---------------+------------------+------------+-------------+
+|            10 | Administration   |        200 |        1700 |
+|            20 | Marketing        |        201 |        1800 |
+|            30 | Purchasing       |        114 |        1700 |
+|            40 | Human Resources  |        203 |        2400 |
+|            50 | Shipping         |        121 |        1500 |
+|            60 | IT               |        103 |        1400 |
+|            70 | Public Relations |        204 |        2700 |
+|            80 | Sales            |        145 |        2500 |
++---------------+------------------+------------+-------------+
+8 rows in set (0.00 sec)
+
+
+
+Write SQL statement to increment salary of each emp by 10%.
+
+mysql> update employees
+    -> set salary = salary * 1.10;
+Query OK, 10 rows affected (0.01 sec)
+Rows matched: 10  Changed: 10  Warnings: 0
+
+mysql> select * from employees;
++-------------+------------+-----------+----------+--------------+------------+---------+-----------+------------+---------------+------------+
+| employee_id | first_name | last_name | email    | phone_number | hire_date  | job_id  | salary    | commission | DEPARTMENT_ID | MANAGER_ID |
++-------------+------------+-----------+----------+--------------+------------+---------+-----------+------------+---------------+------------+
+|         100 | Steven     | King      | SKING    | 5121234567   | 1987-06-17 | AD_PRES | 26400.000 |       0.00 |            10 |        200 |
+|         101 | Neena      | Kochar    | NKOCHHAR | 5121234568   | 1987-06-18 | AD_VP   | 18700.000 |       0.00 |            10 |        200 |
+|         102 | Lex        | De Haan   | LDEHAAN  | 5121234569   | 1987-06-19 | AD_VP   | 18700.000 |       0.00 |            10 |        200 |
+|         103 | Alexander  | Hunold    | AHUNOLD  | 5904234567   | 1987-06-20 | IT_PROG |  9900.000 |       0.00 |            60 |        103 |
+|         104 | Bruce      | Ernst     | BERNST   | 5904234568   | 1987-06-21 | IT_PROG |  6600.000 |       0.00 |            60 |        103 |
+|         105 | David      | Austin    | DAUSTIN  | 5904234569   | 1987-06-22 | IT_PROG |  5280.000 |       0.00 |            60 |        103 |
+|         106 | Valli      | Pataballa | VPATABAL | 5904234560   | 1987-06-23 | IT_PROG |  5280.000 |       0.00 |            60 |        103 |
+|         107 | Diana      | Lorentz   | DLORENTZ | 5904235567   | 1987-06-24 | IT_PROG |  4620.000 |       0.00 |            30 |        114 |
+|         108 | Nancy      | Greenberg | NGREENE  | 5151244569   | 1987-06-25 | SA_MAN  | 13200.000 |       0.00 |            80 |        145 |
+|         109 | Daniel     | Faviet    | DFAVIET  | 5151244169   | 1987-06-26 | SA_MAN  |  9900.000 |       0.00 |            80 |        145 |
++-------------+------------+-----------+----------+--------------+------------+---------+-----------+------------+---------------+------------+
+
+
+Write a SQL statement to change the email column of employees table with 'not available' for those employees whose department_id is 80 and gets a commission is less than .20% 
+
+mysql> update employees
+    -> set email= 'not available'
+    -> where department_id = '80' and commission<0.20;
+
+mysql> select * from employees;
++-------------+------------+-----------+---------------+--------------+------------+---------+-----------+------------+---------------+------------+
+| employee_id | first_name | last_name | email         | phone_number | hire_date  | job_id  | salary    | commission | DEPARTMENT_ID | MANAGER_ID |
++-------------+------------+-----------+---------------+--------------+------------+---------+-----------+------------+---------------+------------+
+|         100 | Steven     | King      | SKING         | 5121234567   | 1987-06-17 | AD_PRES | 26400.000 |       0.00 |            10 |        200 |
+|         101 | Neena      | Kochar    | NKOCHHAR      | 5121234568   | 1987-06-18 | AD_VP   | 18700.000 |       0.00 |            10 |        200 |
+|         102 | Lex        | De Haan   | LDEHAAN       | 5121234569   | 1987-06-19 | AD_VP   | 18700.000 |       0.00 |            10 |        200 |
+|         103 | Alexander  | Hunold    | AHUNOLD       | 5904234567   | 1987-06-20 | IT_PROG |  9900.000 |       0.00 |            60 |        103 |
+|         104 | Bruce      | Ernst     | BERNST        | 5904234568   | 1987-06-21 | IT_PROG |  6600.000 |       0.00 |            60 |        103 |
+|         105 | David      | Austin    | DAUSTIN       | 5904234569   | 1987-06-22 | IT_PROG |  5280.000 |       0.00 |            60 |        103 |
+|         106 | Valli      | Pataballa | VPATABAL      | 5904234560   | 1987-06-23 | IT_PROG |  5280.000 |       0.00 |            60 |        103 |
+|         107 | Diana      | Lorentz   | DLORENTZ      | 5904235567   | 1987-06-24 | IT_PROG |  4620.000 |       0.00 |            30 |        114 |
+|         108 | Nancy      | Greenberg | not available | 5151244569   | 1987-06-25 | SA_MAN  | 13200.000 |       0.00 |            80 |        145 |
+|         109 | Daniel     | Faviet    | not available | 5151244169   | 1987-06-26 | SA_MAN  |  9900.000 |       0.00 |            80 |        145 |
++-------------+------------+-----------+---------------+--------------+------------+---------+-----------+------------+---------------+------------+
+10 rows in set (0.00 sec)
+
+
+Write a SQL statement to change the email column of employees table with 'not available' for those employees who belongs to the 'Purchasing' department.
+
+mysql> UPDATE employees
+    -> SET email = 'not available'
+    -> WHERE DEPARTMENT_ID = (
+    ->     SELECT DEPARTMENT_ID
+    ->     FROM department
+    ->     WHERE DEPARTMENT_NAME = 'Purchasing'
+    -> );
+Query OK
+
+
+Write a SQL statement to change the email and commission_pct column of employees table with 'not available' and 0.10 for all employees. 
+mysql> update employees
+    -> set email = 'not available', commission=0.1;
+
