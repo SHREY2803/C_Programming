@@ -286,9 +286,9 @@ void top3Books()
     }
     for (int i = 0; i < Bookcount && i < 3; i++)
     {
-        printf("%d | %s | %s | %s | %.2f | %.1f\n",
-               library[i].BookID, library[i].Book_Name, library[i].Author_Name,
-               library[i].Category, library[i].Price, library[i].Rating);
+        printf("Book ID: %d | Book Name: %s | Book Author: %s | Category: %s | Price: %.2f | Rating: %.1f\n",
+                   library[i].BookID, library[i].Book_Name, library[i].Author_Name,
+                   library[i].Category, library[i].Price, library[i].Rating);
     }
 }
 
