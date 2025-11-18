@@ -8,7 +8,7 @@ int main()
     printf("Enter your string here: \n");
     scanf("%s", str);
 
-    strcpy(temp,str);
+    strcpy(temp,str); // strcpy(destination,source)
 
     char cpr[100];
     strncpy(cpr,str,3);
